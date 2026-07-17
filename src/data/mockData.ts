@@ -100,6 +100,36 @@ export const mockListings: Collectible[] = [
     sellerName: 'RajputanaJewels',
     location: 'Jodhpur, India',
     image: '/images/kundan_necklace.png',
+  },
+  {
+    id: '11',
+    title: 'Intricate Sandalwood Elephant Carving',
+    category: 'Crafts',
+    condition: 'New',
+    price: 5200,
+    sellerName: 'KeralaWoodCrafts',
+    location: 'Kochi, India',
+    image: '/images/elephant.png',
+  },
+  {
+    id: '12',
+    title: 'Antique 2 Annas Silver Coin (1939)',
+    category: 'Coins',
+    condition: 'Good',
+    price: 4100,
+    sellerName: 'NumismaticsIndia',
+    location: 'Pune, India',
+    image: '/images/indian_coin.png',
+  },
+  {
+    id: '13',
+    title: 'First Independence Day Stamp (1947)',
+    category: 'Stamps',
+    condition: 'Mint',
+    price: 9500,
+    sellerName: 'PhilatelyKing',
+    location: 'New Delhi, India',
+    image: '/images/mughal_stamp.png',
   }
 ];
 
