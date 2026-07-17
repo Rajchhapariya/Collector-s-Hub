@@ -48,7 +48,9 @@ const CollectionCard = ({ item }: CollectionCardProps) => {
         <Flex w="100%" justify="space-between" align="center">
           <Box>
             <Text fontSize="xs" color="earth.600" _dark={{ color: "earth.400" }}>Estimated Value</Text>
-            <Text fontWeight="bold" color="brand.600" _dark={{ color: "brand.300" }}>₹{(item.estimatedValue || item.price).toLocaleString('en-IN')}</Text>
+            <Text fontWeight="bold" color="brand.600" _dark={{ color: "brand.300" }}>
+              {(item.estimatedValue || item.price) ? `₹${(item.estimatedValue || item.price).toLocaleString('en-IN')}` : 'Not specified'}
+            </Text>
           </Box>
           <Menu>
             <MenuButton as={IconButton} icon={<MoreVertical size={16} />} variant="ghost" size="sm" />
