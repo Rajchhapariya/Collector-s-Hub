@@ -175,7 +175,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p4',
     user: {
       name: 'Bidyut Borgohain',
-      avatar: '/images/avatar2.png',
+      avatar: 'https://randomuser.me/api/portraits/men/43.jpg',
     },
     image: '/images/indian_coin.png',
     caption: 'Finally added this rare 1918 1 Rupee Coin to my numismatic collection. The silver condition is impeccable! 🪙 #VintageCoins #Numismatics',
@@ -188,7 +188,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p5',
     user: {
       name: 'Lalrinzuali',
-      avatar: '/images/avatar1.png',
+      avatar: 'https://randomuser.me/api/portraits/women/47.jpg',
     },
     image: '/images/madhubani_art.png',
     caption: 'Just unboxed this gorgeous Madhubani canvas art. The traditional patterns add so much life to my living room. 🖼️',
@@ -201,7 +201,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p6',
     user: {
       name: 'Temsula Ao',
-      avatar: '/images/avatar3.png',
+      avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
     },
     image: '/images/kundan_necklace.png',
     caption: 'Acquired this breathtaking royal Kundan necklace for an upcoming family wedding. The craftsmanship of Rajputana jewelers is truly unmatched. ✨',
@@ -213,7 +213,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p7',
     user: {
       name: 'Phuntsok Dorjee',
-      avatar: '/images/avatar2.png',
+      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
     },
     image: '/images/elephant.png',
     caption: 'I am mesmerized by the intricate details on this Mysore hand-carved wooden elephant. A true testament to Indian craftsmanship! 🐘✨',
@@ -226,7 +226,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p8',
     user: {
       name: 'Ritu Rajkonwar',
-      avatar: '/images/avatar1.png',
+      avatar: 'https://randomuser.me/api/portraits/men/22.jpg',
     },
     image: '/images/diyas.png',
     caption: 'Restoring these vintage brass diyas from Jaipur to their former glory. The patina on these antiques is just incredible. 🪔 #Antiques #Heritage',
