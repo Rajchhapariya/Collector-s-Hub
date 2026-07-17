@@ -38,13 +38,13 @@ const Layout = () => {
         <Container maxW="container.xl">
           <Flex h={16} alignItems="center" justify="space-between">
             {/* Left Side: Logo */}
-            <Flex flex={{ base: 0, md: 1 }} justify="flex-start">
-              <ChakraLink as={RouterLink} to="/" _hover={{ textDecoration: 'none' }}>
-                <Flex alignItems="center" gap={2.5}>
-                  <Box color="brand.500" display="flex" transform="translateY(-2px)">
-                    <ShoppingBag size={24} strokeWidth={2.5} />
+            <Flex flex={{ base: 0, md: 1 }} justify="flex-start" alignItems="center">
+              <ChakraLink as={RouterLink} to="/" _hover={{ textDecoration: 'none' }} display="flex" alignItems="center">
+                <Flex alignItems="center" gap={2}>
+                  <Box color="brand.500" display="flex" alignItems="center">
+                    <ShoppingBag size={22} strokeWidth={2.5} />
                   </Box>
-                  <Heading size="md" color="brand.500" letterSpacing="tight" lineHeight="1" transform="translateY(1px)">
+                  <Heading size="md" color="brand.500" letterSpacing="tight" lineHeight="1">
                     Collector's Hub
                   </Heading>
                 </Flex>
