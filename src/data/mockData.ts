@@ -178,5 +178,30 @@ export const mockFeedPosts: FeedPost[] = [
     category: 'Jewelry',
     likes: 890,
     comments: 54,
+  },
+  {
+    id: 'p7',
+    user: {
+      name: 'Sneha Patil',
+      avatar: 'https://randomuser.me/api/portraits/women/27.jpg',
+    },
+    image: '/images/elephant.png',
+    caption: 'I am mesmerized by the intricate details on this Mysore hand-carved wooden elephant. A true testament to Indian craftsmanship! 🐘✨',
+    category: 'Crafts',
+    likes: 310,
+    comments: 22,
+    isLiked: true,
+  },
+  {
+    id: 'p8',
+    user: {
+      name: 'Rohan Kapoor',
+      avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
+    },
+    image: '/images/diyas.png',
+    caption: 'Restoring these vintage brass diyas from Jaipur to their former glory. The patina on these antiques is just incredible. 🪔 #Antiques #Heritage',
+    category: 'Antiques',
+    likes: 542,
+    comments: 31,
   }
 ];
