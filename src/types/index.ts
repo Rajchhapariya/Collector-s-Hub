@@ -27,5 +27,5 @@ export interface FeedPost {
 
 export interface CollectionItem extends Collectible {
   dateAdded: string;
-  collectionType: 'Owned' | 'Wishlist' | 'Selling';
+  collectionType: 'Owned' | 'Wishlist' | 'Selling' | 'Saved Posts';
 }

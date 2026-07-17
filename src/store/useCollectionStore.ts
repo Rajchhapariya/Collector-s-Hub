@@ -7,9 +7,11 @@ interface CollectionState {
   search: string;
   category: string;
   sortBy: string;
+  viewMode: 'grid' | 'list';
   setSearch: (search: string) => void;
   setCategory: (category: string) => void;
   setSortBy: (sortBy: string) => void;
+  setViewMode: (mode: 'grid' | 'list') => void;
   addItem: (item: Collectible, collectionType: CollectionItem['collectionType']) => { success: boolean; message: string };
   removeItem: (id: string) => void;
   moveItem: (id: string, newType: CollectionItem['collectionType']) => void;
@@ -22,9 +24,11 @@ export const useCollectionStore = create<CollectionState>()(
       search: '',
       category: '',
       sortBy: 'newest',
+      viewMode: 'grid',
       setSearch: (search) => set({ search }),
       setCategory: (category) => set({ category }),
       setSortBy: (sortBy) => set({ sortBy }),
+      setViewMode: (viewMode) => set({ viewMode }),
       addItem: (item, collectionType) => {
         const { items } = get();
         const existsInCollection = items.find((i) => i.id === item.id && i.collectionType === collectionType);

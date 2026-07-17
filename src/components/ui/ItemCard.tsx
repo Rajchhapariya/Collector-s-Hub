@@ -6,9 +6,10 @@ import { useCollectionStore } from '../../store/useCollectionStore';
 interface ItemCardProps {
   item: Collectible;
   onOpenDetails?: (item: Collectible) => void;
+  viewMode?: 'grid' | 'list';
 }
 
-const ItemCard = ({ item, onOpenDetails }: ItemCardProps) => {
+const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => {
   const addItem = useCollectionStore(state => state.addItem);
   const toast = useToast();
 
@@ -24,15 +25,17 @@ const ItemCard = ({ item, onOpenDetails }: ItemCardProps) => {
     });
   };
 
+  const isList = viewMode === 'list';
+
   return (
-    <Card h="100%">
-      <CardBody p={0}>
+    <Card h="100%" direction={isList ? { base: 'column', sm: 'row' } : 'column'} overflow="hidden">
+      <CardBody p={0} display={isList ? 'flex' : 'block'} flexDir={isList ? { base: 'column', sm: 'row' } : 'column'}>
         <Image
           src={item.image}
           fallbackSrc="https://placehold.co/500x500/E5DFD5/873928?text=Loading..."
           alt={item.title}
-          height={{ base: "180px", md: "220px" }}
-          width="100%"
+          height={isList ? { base: "180px", sm: "100%" } : { base: "180px", md: "220px" }}
+          width={isList ? { base: "100%", sm: "200px", md: "250px" } : "100%"}
           objectFit="contain"
           bg="earth.50"
           _dark={{ bg: "earth.900" }}
@@ -40,7 +43,7 @@ const ItemCard = ({ item, onOpenDetails }: ItemCardProps) => {
           onClick={() => onOpenDetails?.(item)}
           loading="lazy"
         />
-        <Stack mt="4" spacing="3" px={{ base: 3, md: 5 }}>
+        <Stack mt={isList ? { base: 4, sm: 0 } : "4"} spacing="3" px={{ base: 3, md: 5 }} py={isList ? { sm: 4 } : 0} flex="1">
           <Stack spacing={1} cursor={onOpenDetails ? "pointer" : "default"} onClick={() => onOpenDetails?.(item)}>
             <Heading size="md" noOfLines={2} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
             <Text color="brand.600" _dark={{ color: "brand.300" }} fontSize="xl" fontWeight="bold">
@@ -58,11 +61,18 @@ const ItemCard = ({ item, onOpenDetails }: ItemCardProps) => {
           </Text>
         </Stack>
       </CardBody>
-      <Divider mt="4" borderColor="earth.200" _dark={{ borderColor: "whiteAlpha.200" }} />
-      <CardFooter pt={4} px={{ base: 3, md: 5 }} pb={5}>
-        <Flex w="100%" gap={3}>
-          <Button flex="1" size="md" variant="solid" colorScheme="brand" leftIcon={<Icon as={ShoppingCart} boxSize={4} />} onClick={() => handleAdd('Owned')}>
-            Add to Bag
+      
+      {!isList && <Divider mt="4" borderColor="earth.200" _dark={{ borderColor: "whiteAlpha.200" }} />}
+      
+      <CardFooter pt={isList ? 0 : 4} px={{ base: 3, md: 5 }} pb={5} display={isList ? 'flex' : 'block'}>
+        <Flex w="100%" gap={3} justify={isList ? 'flex-end' : 'flex-start'} align={isList ? 'center' : 'stretch'}>
+          {isList && (
+            <Text fontWeight="bold" color="brand.600" _dark={{ color: "brand.300" }} mr={4}>
+              ₹{item.price.toLocaleString('en-IN')}
+            </Text>
+          )}
+          <Button flex={isList ? 'none' : '1'} size="md" variant="solid" colorScheme="brand" leftIcon={isList ? undefined : <Icon as={ShoppingCart} boxSize={4} />} onClick={() => handleAdd('Owned')}>
+            {isList ? 'Add to Bag' : 'Add to Bag'}
           </Button>
           <Button size="md" variant="outline" onClick={() => handleAdd('Wishlist')} px={3}>
             <Icon as={Heart} boxSize={4} />

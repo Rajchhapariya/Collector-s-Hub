@@ -19,7 +19,7 @@ const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
   const handleSave = () => {
     savePost(post.id);
     if (!post.isSaved) {
-      // Actually add it to the Wishlist collection
+      // Actually add it to the Saved Posts collection
       addItem({
         id: post.id,
         title: `Post by ${post.user.name}`,
@@ -29,7 +29,7 @@ const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
         condition: 'Used',
         sellerName: post.user.name,
         location: 'Community Feed'
-      }, 'Wishlist');
+      }, 'Saved Posts');
 
       toast({
         title: "Saved to collections",

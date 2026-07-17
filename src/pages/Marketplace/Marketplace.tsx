@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Box, Container, Heading, SimpleGrid, Input, Select, Flex, Skeleton, Text, InputGroup, InputLeftElement, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, useDisclosure, Image, Badge, Button, Icon, useToast, Divider } from '@chakra-ui/react';
-import { Search, ShoppingCart, Heart } from 'lucide-react';
+import { Box, Container, Heading, SimpleGrid, Input, Select, Flex, Skeleton, Text, InputGroup, InputLeftElement, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, useDisclosure, Image, Badge, Button, Icon, useToast, Divider, HStack, IconButton } from '@chakra-ui/react';
+import { Search, ShoppingCart, Heart, LayoutGrid, List } from 'lucide-react';
 import { getListings } from '../../services/api';
+import { useDebounce } from '../../hooks/useDebounce';
 import type { Collectible } from '../../types';
 import ItemCard from '../../components/ui/ItemCard';
 import { useCollectionStore } from '../../store/useCollectionStore';
@@ -21,8 +22,10 @@ const Marketplace = () => {
   const [selectedItem, setSelectedItem] = useState<Collectible | null>(null);
 
   // Store
-  const addItem = useCollectionStore(state => state.addItem);
+  const { addItem, viewMode, setViewMode } = useCollectionStore();
   const toast = useToast();
+
+  const debouncedSearch = useDebounce(search, 300);
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -42,8 +45,8 @@ const Marketplace = () => {
   const filteredAndSortedListings = useMemo(() => {
     let result = [...listings];
 
-    if (search) {
-      result = result.filter(item => item.title.toLowerCase().includes(search.toLowerCase()));
+    if (debouncedSearch) {
+      result = result.filter(item => item.title.toLowerCase().includes(debouncedSearch.toLowerCase()));
     }
 
     if (category) {
@@ -61,7 +64,7 @@ const Marketplace = () => {
     }
 
     return result;
-  }, [listings, search, category, condition, sortBy]);
+  }, [listings, debouncedSearch, category, condition, sortBy]);
 
   const handleOpenDetails = (item: Collectible) => {
     setSelectedItem(item);
@@ -121,27 +124,27 @@ const Marketplace = () => {
           </Select>
 
           <Select maxW={{ base: '100%', md: '200px' }} value={sortBy} onChange={(e) => setSortBy(e.target.value)} ml={{ md: 'auto' }} bg="white" _dark={{ bg: 'earth.800' }}>
-            <option value="newest">Newest First</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Sort by: Newest</option>
+            <option value="price-desc">Sort by: High to Low</option>
+            <option value="price-asc">Sort by: Low to High</option>
           </Select>
+
+          <HStack spacing={2} display={{ base: 'none', md: 'flex' }}>
+            <IconButton aria-label="Grid view" icon={<LayoutGrid size={20} />} variant={viewMode === 'grid' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('grid')} />
+            <IconButton aria-label="List view" icon={<List size={20} />} variant={viewMode === 'list' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('list')} />
+          </HStack>
         </Flex>
 
         {loading ? (
-          <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
-            {[1, 2, 3, 4, 5, 6].map(i => (
-              <Box key={i} p={4} border="1px solid" borderColor="earth.200" _dark={{ borderColor: "whiteAlpha.200", bg: "earth.800" }} borderRadius="2xl" bg="white">
-                <Skeleton height="200px" mb={4} borderRadius="md" />
-                <Skeleton height="20px" mb={2} />
-                <Skeleton height="20px" width="50%" mb={4} />
-                <Skeleton height="40px" />
-              </Box>
+          <SimpleGrid columns={viewMode === 'grid' ? { base: 1, sm: 2, md: 3, lg: 4 } : 1} spacing={6}>
+            {[...Array(8)].map((_, i) => (
+              <Skeleton key={i} height="300px" rounded="md" />
             ))}
           </SimpleGrid>
         ) : filteredAndSortedListings.length > 0 ? (
-          <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
+          <SimpleGrid columns={viewMode === 'grid' ? { base: 1, sm: 2, md: 3, lg: 4 } : 1} spacing={6}>
             {filteredAndSortedListings.map(item => (
-              <ItemCard key={item.id} item={item} onOpenDetails={handleOpenDetails} />
+              <ItemCard key={item.id} item={item} onOpenDetails={handleOpenDetails} viewMode={viewMode} />
             ))}
           </SimpleGrid>
         ) : (

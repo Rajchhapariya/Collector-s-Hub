@@ -5,30 +5,33 @@ import { useCollectionStore } from '../../store/useCollectionStore';
 
 interface CollectionCardProps {
   item: CollectionItem;
+  viewMode?: 'grid' | 'list';
 }
 
-const CollectionCard = ({ item }: CollectionCardProps) => {
+const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
   const { removeItem, moveItem } = useCollectionStore();
 
   const handleMove = (newType: CollectionItem['collectionType']) => {
     moveItem(item.id, newType);
   };
 
+  const isList = viewMode === 'list';
+
   return (
-    <Card h="100%">
-      <CardBody p={0}>
+    <Card h="100%" direction={isList ? { base: 'column', sm: 'row' } : 'column'} overflow="hidden">
+      <CardBody p={0} display={isList ? 'flex' : 'block'} flexDir={isList ? { base: 'column', sm: 'row' } : 'column'}>
         <Image
           src={item.image}
           fallbackSrc="https://placehold.co/500x500/E5DFD5/873928?text=Loading..."
           alt={item.title}
-          height="160px"
-          width="100%"
+          height={isList ? { base: "160px", sm: "100%" } : "160px"}
+          width={isList ? { base: "100%", sm: "200px" } : "100%"}
           objectFit="contain"
           bg="earth.50"
           _dark={{ bg: "earth.900" }}
           loading="lazy"
         />
-        <Stack mt="4" spacing="3" px={{ base: 3, md: 4 }}>
+        <Stack mt={isList ? { base: 4, sm: 0 } : "4"} spacing="3" px={{ base: 3, md: 4 }} py={isList ? { sm: 3 } : 0} flex="1">
           <Flex justify="space-between" align="start">
             <Heading size="md" noOfLines={2} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
           </Flex>
@@ -43,11 +46,11 @@ const CollectionCard = ({ item }: CollectionCardProps) => {
           </Text>
         </Stack>
       </CardBody>
-      <Divider mt="4" borderColor="earth.200" _dark={{ borderColor: "whiteAlpha.200" }} />
-      <CardFooter pt={2} px={{ base: 3, md: 4 }} pb={4}>
-        <Flex w="100%" justify="space-between" align="center">
-          <Box>
-            <Text fontSize="xs" color="earth.600" _dark={{ color: "earth.400" }}>Estimated Value</Text>
+      {!isList && <Divider mt="4" borderColor="earth.200" _dark={{ borderColor: "whiteAlpha.200" }} />}
+      <CardFooter pt={isList ? 0 : 2} px={{ base: 3, md: 4 }} pb={isList ? 0 : 4} display={isList ? 'flex' : 'block'} alignItems={isList ? 'center' : 'stretch'} justify={isList ? 'flex-end' : 'center'} alignSelf={isList ? 'center' : 'auto'}>
+        <Flex w="100%" justify={isList ? 'flex-end' : 'space-between'} align="center" gap={isList ? 4 : 0}>
+          <Box display={isList ? 'flex' : 'block'} alignItems="center" gap={2}>
+            {!isList && <Text fontSize="xs" color="earth.600" _dark={{ color: "earth.400" }}>Estimated Value</Text>}
             <Text fontWeight="bold" color="brand.600" _dark={{ color: "brand.300" }}>
               {(item.estimatedValue || item.price) ? `₹${(item.estimatedValue || item.price).toLocaleString('en-IN')}` : 'Not specified'}
             </Text>

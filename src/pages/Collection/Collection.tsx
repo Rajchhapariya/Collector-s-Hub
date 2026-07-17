@@ -1,16 +1,18 @@
-import { Box, Container, Heading, Tabs, TabList, TabPanels, Tab, TabPanel, SimpleGrid, Text, Input, InputGroup, InputLeftElement, Flex, Select } from '@chakra-ui/react';
-import { Search, Inbox } from 'lucide-react';
+import { Box, Container, Heading, Tabs, TabList, TabPanels, Tab, TabPanel, SimpleGrid, Text, Input, InputGroup, InputLeftElement, Flex, Select, HStack, IconButton } from '@chakra-ui/react';
+import { Search, Inbox, LayoutGrid, List } from 'lucide-react';
 import { useCollectionStore } from '../../store/useCollectionStore';
+import { useDebounce } from '../../hooks/useDebounce';
 import CollectionCard from '../../components/ui/CollectionCard';
 
 const Collection = () => {
-  const { items, search, setSearch, category, setCategory, sortBy, setSortBy } = useCollectionStore();
+  const { items, search, setSearch, category, setCategory, sortBy, setSortBy, viewMode, setViewMode } = useCollectionStore();
+  const debouncedSearch = useDebounce(search, 300);
 
-  const getFilteredItems = (type: 'Owned' | 'Wishlist' | 'Selling') => {
+  const getFilteredItems = (type: 'Owned' | 'Wishlist' | 'Selling' | 'Saved Posts') => {
     let filtered = items.filter(item => item.collectionType === type);
 
-    if (search) {
-      filtered = filtered.filter(item => item.title.toLowerCase().includes(search.toLowerCase()));
+    if (debouncedSearch) {
+      filtered = filtered.filter(item => item.title.toLowerCase().includes(debouncedSearch.toLowerCase()));
     }
 
     if (category) {
@@ -32,6 +34,7 @@ const Collection = () => {
   const ownedItems = getFilteredItems('Owned');
   const wishlistItems = getFilteredItems('Wishlist');
   const sellingItems = getFilteredItems('Selling');
+  const savedPosts = getFilteredItems('Saved Posts');
 
   const hasFilters = search !== '' || category !== '';
 
@@ -75,6 +78,11 @@ const Collection = () => {
           <option value="price-desc">Highest Value</option>
           <option value="price-asc">Lowest Value</option>
         </Select>
+
+        <HStack spacing={2} display={{ base: 'none', md: 'flex' }}>
+          <IconButton aria-label="Grid view" icon={<LayoutGrid size={20} />} variant={viewMode === 'grid' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('grid')} />
+          <IconButton aria-label="List view" icon={<List size={20} />} variant={viewMode === 'list' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('list')} />
+        </HStack>
       </Flex>
 
       <Tabs colorScheme="brand" variant="enclosed">
@@ -82,13 +90,14 @@ const Collection = () => {
           <Tab fontWeight="bold">Owned ({ownedItems.length})</Tab>
           <Tab fontWeight="bold">Wishlist ({wishlistItems.length})</Tab>
           <Tab fontWeight="bold">Selling ({sellingItems.length})</Tab>
+          <Tab fontWeight="bold">Saved Posts ({savedPosts.length})</Tab>
         </TabList>
 
         <TabPanels>
           <TabPanel px={0} py={6}>
             {ownedItems.length > 0 ? (
-              <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
-                {ownedItems.map(item => <CollectionCard key={item.id} item={item} />)}
+              <SimpleGrid columns={viewMode === 'grid' ? { base: 1, sm: 2, md: 3, lg: 4 } : 1} spacing={6}>
+                {ownedItems.map(item => <CollectionCard key={item.id} item={item} viewMode={viewMode} />)}
               </SimpleGrid>
             ) : (
               <EmptyState defaultMessage="Start adding items to your owned collection from the marketplace." />
@@ -96,8 +105,8 @@ const Collection = () => {
           </TabPanel>
           <TabPanel px={0} py={6}>
             {wishlistItems.length > 0 ? (
-              <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
-                {wishlistItems.map(item => <CollectionCard key={item.id} item={item} />)}
+              <SimpleGrid columns={viewMode === 'grid' ? { base: 1, sm: 2, md: 3, lg: 4 } : 1} spacing={6}>
+                {wishlistItems.map(item => <CollectionCard key={item.id} item={item} viewMode={viewMode} />)}
               </SimpleGrid>
             ) : (
               <EmptyState defaultMessage="Your wishlist is empty. Discover items you want in the marketplace." />
@@ -105,11 +114,20 @@ const Collection = () => {
           </TabPanel>
           <TabPanel px={0} py={6}>
             {sellingItems.length > 0 ? (
-              <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={6}>
-                {sellingItems.map(item => <CollectionCard key={item.id} item={item} />)}
+              <SimpleGrid columns={viewMode === 'grid' ? { base: 1, sm: 2, md: 3, lg: 4 } : 1} spacing={6}>
+                {sellingItems.map(item => <CollectionCard key={item.id} item={item} viewMode={viewMode} />)}
               </SimpleGrid>
             ) : (
               <EmptyState defaultMessage="You aren't selling anything right now." />
+            )}
+          </TabPanel>
+          <TabPanel px={0} py={6}>
+            {savedPosts.length > 0 ? (
+              <SimpleGrid columns={viewMode === 'grid' ? { base: 1, sm: 2, md: 3, lg: 4 } : 1} spacing={6}>
+                {savedPosts.map(item => <CollectionCard key={item.id} item={item} viewMode={viewMode} />)}
+              </SimpleGrid>
+            ) : (
+              <EmptyState defaultMessage="You haven't saved any posts from the community feed yet." />
             )}
           </TabPanel>
         </TabPanels>
