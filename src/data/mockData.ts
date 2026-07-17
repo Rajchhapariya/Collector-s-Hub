@@ -109,7 +109,7 @@ export const mockListings: Collectible[] = [
     price: 5200,
     sellerName: 'KeralaWoodCrafts',
     location: 'Kochi, India',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/2/22/Elephant_Carved_Wood.jpg',
+    image: '/images/elephant.png',
   },
   {
     id: '12',
@@ -119,7 +119,7 @@ export const mockListings: Collectible[] = [
     price: 4100,
     sellerName: 'NumismaticsIndia',
     location: 'Pune, India',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/0/03/2-annas-1946-george-vi-obs.png',
+    image: '/images/indian_coin.png',
   },
   {
     id: '13',
@@ -129,7 +129,7 @@ export const mockListings: Collectible[] = [
     price: 9500,
     sellerName: 'PhilatelyKing',
     location: 'New Delhi, India',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Stamp_of_India_-_1947_-_Colnect_141342_-_1_-_National_Flag.jpeg',
+    image: '/images/mughal_stamp.png',
   },
   {
     id: '14',
@@ -139,7 +139,7 @@ export const mockListings: Collectible[] = [
     price: 18500,
     sellerName: 'DeccanHeritage',
     location: 'Thrissur, India',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Uruli.jpg',
+    image: '/images/diyas.png',
   }
 ];
 
@@ -185,7 +185,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p4',
     user: {
       name: 'Bidyut Borgohain',
-      avatar: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Bikash_Dihingia_-_Portrait.jpg',
+      avatar: 'https://ui-avatars.com/api/?name=Bidyut+Borgohain&background=random&color=fff',
     },
     image: '/images/indian_coin.png',
     caption: 'Finally added this rare 1918 1 Rupee Coin to my numismatic collection. The silver condition is impeccable! 🪙 #VintageCoins #Numismatics',
@@ -198,7 +198,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p5',
     user: {
       name: 'Lalrinzuali',
-      avatar: 'https://upload.wikimedia.org/wikipedia/commons/b/b3/Mizo_girls_in_Mizo_traditional_dress.jpg',
+      avatar: 'https://ui-avatars.com/api/?name=Lalrinzuali&background=random&color=fff',
     },
     image: '/images/madhubani_art.png',
     caption: 'Just unboxed this gorgeous Madhubani canvas art. The traditional patterns add so much life to my living room. 🖼️',
@@ -211,7 +211,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p6',
     user: {
       name: 'Temsula Ao',
-      avatar: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Aos_2219b.jpg',
+      avatar: 'https://ui-avatars.com/api/?name=Temsula+Ao&background=random&color=fff',
     },
     image: '/images/kundan_necklace.png',
     caption: 'Acquired this breathtaking royal Kundan necklace for an upcoming family wedding. The craftsmanship of Rajputana jewelers is truly unmatched. ✨',
@@ -223,9 +223,9 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p7',
     user: {
       name: 'Phuntsok Dorjee',
-      avatar: 'https://upload.wikimedia.org/wikipedia/commons/1/13/A_Monpa_man.jpg',
+      avatar: 'https://ui-avatars.com/api/?name=Phuntsok+Dorjee&background=random&color=fff',
     },
-    image: 'https://upload.wikimedia.org/wikipedia/commons/2/22/Elephant_Carved_Wood.jpg',
+    image: '/images/elephant.png',
     caption: 'I am mesmerized by the intricate details on this Mysore hand-carved wooden elephant. A true testament to Indian craftsmanship! 🐘✨',
     category: 'Crafts',
     likes: 310,
@@ -236,9 +236,9 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p8',
     user: {
       name: 'Ritu Rajkonwar',
-      avatar: 'https://upload.wikimedia.org/wikipedia/commons/f/f6/Zubeen_Garg_2019.jpg',
+      avatar: 'https://ui-avatars.com/api/?name=Ritu+Rajkonwar&background=random&color=fff',
     },
-    image: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Uruli.jpg',
+    image: '/images/diyas.png',
     caption: 'Restoring these vintage brass diyas from Jaipur to their former glory. The patina on these antiques is just incredible. 🪔 #Antiques #Heritage',
     category: 'Antiques',
     likes: 542,
