@@ -3,6 +3,8 @@ import { Heart, MessageCircle, Bookmark, Share2, MoreVertical } from 'lucide-rea
 import type { FeedPost } from '../../types';
 import { useFeedStore } from '../../store/useFeedStore';
 
+import { useCollectionStore } from '../../store/useCollectionStore';
+
 interface PostCardProps {
   post: FeedPost;
   onOpenDetails?: (post: FeedPost) => void;
@@ -10,18 +12,34 @@ interface PostCardProps {
 
 const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
   const { likePost, savePost } = useFeedStore();
+  const { addItem, removeItem } = useCollectionStore();
   const likeColor = '#ed4956'; // Instagram red
   const toast = useToast();
 
   const handleSave = () => {
     savePost(post.id);
     if (!post.isSaved) {
+      // Actually add it to the Wishlist collection
+      addItem({
+        id: post.id,
+        title: `Post by ${post.user.name}`,
+        image: post.image,
+        price: 0,
+        category: post.category,
+        condition: 'Used',
+        sellerName: post.user.name,
+        location: 'Community Feed'
+      }, 'Wishlist');
+
       toast({
         title: "Saved to collections",
         status: "success",
         duration: 2000,
         isClosable: true,
       });
+    } else {
+      // Remove it if they unsave
+      removeItem(post.id);
     }
   };
 
