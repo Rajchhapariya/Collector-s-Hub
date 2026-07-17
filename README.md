@@ -64,3 +64,4 @@ Open your browser and visit `http://localhost:5173/` to view the application.
 7. **Dark Mode Integration**: The application includes a seamlessly integrated Dark Mode that respects the user's system preferences by default and automatically updates the glassmorphic styling for low-light environments.
 8. **Fully Responsive Layout**: The UI gracefully degrades from large desktop monitors down to mobile screens, complete with a responsive mobile dropdown menu.
 9. **Empty States**: Beautifully designed empty states guide the user when their collection is empty or a search yields no results.
+10. **Culturally Authentic Mock Data**: The application features bespoke, culturally authentic data representations, including realistic Indian heritage items (Kerala Urulis, Sandalwood carvings, Independence stamps) and authentic AI-generated portraits representing the diverse people of Northeast India (Assam, Nagaland, Mizoram, Arunachal Pradesh) in the Community Feed.

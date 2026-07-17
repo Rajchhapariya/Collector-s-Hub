@@ -109,7 +109,7 @@ export const mockListings: Collectible[] = [
     price: 5200,
     sellerName: 'KeralaWoodCrafts',
     location: 'Kochi, India',
-    image: '/images/elephant.png',
+    image: '/images/sandalwood_elephant.jpg',
   },
   {
     id: '12',
@@ -119,7 +119,7 @@ export const mockListings: Collectible[] = [
     price: 4100,
     sellerName: 'NumismaticsIndia',
     location: 'Pune, India',
-    image: '/images/indian_coin.png',
+    image: '/images/antique_2_annas.jpg',
   },
   {
     id: '13',
@@ -129,7 +129,7 @@ export const mockListings: Collectible[] = [
     price: 9500,
     sellerName: 'PhilatelyKing',
     location: 'New Delhi, India',
-    image: '/images/mughal_stamp.png',
+    image: '/images/independence_stamp.jpg',
   },
   {
     id: '14',
@@ -139,7 +139,7 @@ export const mockListings: Collectible[] = [
     price: 18500,
     sellerName: 'DeccanHeritage',
     location: 'Thrissur, India',
-    image: '/images/diyas.png',
+    image: '/images/brass_uruli.jpg',
   }
 ];
 
@@ -185,10 +185,10 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p4',
     user: {
       name: 'Bidyut Borgohain',
-      avatar: 'https://ui-avatars.com/api/?name=Bidyut+Borgohain&background=random&color=fff',
+      avatar: '/images/avatar_bidyut.jpg',
     },
-    image: '/images/indian_coin.png',
-    caption: 'Finally added this rare 1918 1 Rupee Coin to my numismatic collection. The silver condition is impeccable! 🪙 #VintageCoins #Numismatics',
+    image: '/images/antique_2_annas.jpg',
+    caption: 'Finally added this rare 1939 2 Annas Silver Coin to my numismatic collection. The silver condition is impeccable! 🪙 #VintageCoins #Numismatics',
     category: 'Coins',
     likes: 215,
     comments: 18,
@@ -198,7 +198,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p5',
     user: {
       name: 'Lalrinzuali',
-      avatar: 'https://ui-avatars.com/api/?name=Lalrinzuali&background=random&color=fff',
+      avatar: '/images/avatar_lalrinzuali.jpg',
     },
     image: '/images/madhubani_art.png',
     caption: 'Just unboxed this gorgeous Madhubani canvas art. The traditional patterns add so much life to my living room. 🖼️',
@@ -211,7 +211,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p6',
     user: {
       name: 'Temsula Ao',
-      avatar: 'https://ui-avatars.com/api/?name=Temsula+Ao&background=random&color=fff',
+      avatar: '/images/avatar_temsula.jpg',
     },
     image: '/images/kundan_necklace.png',
     caption: 'Acquired this breathtaking royal Kundan necklace for an upcoming family wedding. The craftsmanship of Rajputana jewelers is truly unmatched. ✨',
@@ -223,10 +223,10 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p7',
     user: {
       name: 'Phuntsok Dorjee',
-      avatar: 'https://ui-avatars.com/api/?name=Phuntsok+Dorjee&background=random&color=fff',
+      avatar: '/images/avatar_phuntsok.jpg',
     },
-    image: '/images/elephant.png',
-    caption: 'I am mesmerized by the intricate details on this Mysore hand-carved wooden elephant. A true testament to Indian craftsmanship! 🐘✨',
+    image: '/images/sandalwood_elephant.jpg',
+    caption: 'I am mesmerized by the intricate details on this authentic hand-carved sandalwood elephant. A true testament to Indian craftsmanship! 🐘✨',
     category: 'Crafts',
     likes: 310,
     comments: 22,
@@ -236,10 +236,10 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p8',
     user: {
       name: 'Ritu Rajkonwar',
-      avatar: 'https://ui-avatars.com/api/?name=Ritu+Rajkonwar&background=random&color=fff',
+      avatar: '/images/avatar_ritu.jpg',
     },
-    image: '/images/diyas.png',
-    caption: 'Restoring these vintage brass diyas from Jaipur to their former glory. The patina on these antiques is just incredible. 🪔 #Antiques #Heritage',
+    image: '/images/brass_uruli.jpg',
+    caption: 'Restoring this vintage brass Kerala Uruli to its former glory. The patina on this antique vessel is just incredible. ✨ #Antiques #Heritage',
     category: 'Antiques',
     likes: 542,
     comments: 31,
