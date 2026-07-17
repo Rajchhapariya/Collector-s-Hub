@@ -23,12 +23,19 @@ This project is built using React, Vite, and TypeScript. To run it locally:
    npm run dev
    ```
 
-4. **Build for production** (optional):
+4. **Testing on Mobile (Local Network)**:
+   To view the application on your mobile phone, run the server with the host flag to expose it to your local network:
+   ```bash
+   npm run dev -- --host
+   ```
+   Then, open the Network IP address (e.g., `http://192.168.x.x:5173/`) shown in your terminal on your mobile device's browser.
+
+5. **Build for production** (optional):
    ```bash
    npm run build
    ```
 
-Open your browser and visit `http://localhost:5173/` (or the URL provided by Vite) to view the application.
+Open your browser and visit `http://localhost:5173/` to view the application.
 
 ## Libraries Used
 
@@ -52,6 +59,8 @@ Open your browser and visit `http://localhost:5173/` (or the URL provided by Vit
 2. **Global Debounced Search**: Search bars in the Marketplace, Feed, and Collection pages utilize a custom `useDebounce` hook to prevent rapid re-rendering and simulate optimized API calls.
 3. **Persistent State Management**: Adding items to the collection or liking posts persists across page reloads via `localStorage`.
 4. **Grid vs. List View Toggle**: The Marketplace supports toggling between a dense Grid view and a detailed List view, giving users flexibility in how they browse.
-5. **Dark Mode Integration**: The application includes a seamlessly integrated Dark Mode that respects the user's system preferences by default and automatically updates the glassmorphic styling for low-light environments.
-6. **Fully Responsive Design**: The UI gracefully degrades from large desktop monitors down to mobile screens using CSS Grid/Flexbox and Chakra UI's responsive array syntax.
-7. **Empty States**: Beautifully designed empty states guide the user when their collection is empty or a search yields no results.
+5. **Mobile List View Optimization**: Advanced flexbox manipulation dynamically adjusts the structure of List View cards on mobile screens so that elements elegantly wrap without causing UI overflow.
+6. **Pixel-Perfect Optical Alignment**: Special attention was paid to the typographic and icon alignment (such as the navigation logo) to ensure flawless visual harmony across the application.
+7. **Dark Mode Integration**: The application includes a seamlessly integrated Dark Mode that respects the user's system preferences by default and automatically updates the glassmorphic styling for low-light environments.
+8. **Fully Responsive Layout**: The UI gracefully degrades from large desktop monitors down to mobile screens, complete with a responsive mobile dropdown menu.
+9. **Empty States**: Beautifully designed empty states guide the user when their collection is empty or a search yields no results.
