@@ -5,11 +5,13 @@ import { getFeedPosts } from '../../services/api';
 import type { FeedPost } from '../../types';
 import PostCard from '../../components/ui/PostCard';
 import { useFeedStore } from '../../store/useFeedStore';
+import { useDebounce } from '../../hooks/useDebounce';
 
 const Feed = () => {
   const { posts, setPosts } = useFeedStore();
   const [loading, setLoading] = useState(posts.length === 0);
   const [searchQuery, setSearchQuery] = useState('');
+  const debouncedSearch = useDebounce(searchQuery, 300);
   const [category, setCategory] = useState('All');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedPost, setSelectedPost] = useState<FeedPost | null>(null);
@@ -29,7 +31,7 @@ const Feed = () => {
   }, [setPosts]);
 
   const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.caption.toLowerCase().includes(searchQuery.toLowerCase()) || post.user.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = post.caption.toLowerCase().includes(debouncedSearch.toLowerCase()) || post.user.name.toLowerCase().includes(debouncedSearch.toLowerCase());
     const matchesCategory = category === 'All' || post.category === category;
     return matchesSearch && matchesCategory;
   });
