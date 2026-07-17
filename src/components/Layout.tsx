@@ -41,10 +41,10 @@ const Layout = () => {
             <Flex flex={{ base: 0, md: 1 }} justify="flex-start">
               <ChakraLink as={RouterLink} to="/" _hover={{ textDecoration: 'none' }}>
                 <Flex alignItems="center" gap={2.5} h="full">
-                  <Box color="brand.500" display="flex" alignItems="center">
+                  <Box color="brand.500" display="flex" alignItems="center" mt="-2px">
                     <ShoppingBag size={24} strokeWidth={2.5} />
                   </Box>
-                  <Heading size="md" color="brand.500" letterSpacing="tight" lineHeight="1">
+                  <Heading size="md" color="brand.500" letterSpacing="tight" lineHeight="1" mt="2px">
                     Collector's Hub
                   </Heading>
                 </Flex>
