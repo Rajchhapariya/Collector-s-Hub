@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter, Flex, Avatar, Box, Heading, Text, Image, IconButton, Button, HStack, useColorModeValue } from '@chakra-ui/react';
+import { Card, CardHeader, CardBody, CardFooter, Flex, Avatar, Box, Heading, Text, Image, IconButton, Button, HStack, useToast } from '@chakra-ui/react';
 import { Heart, MessageCircle, Bookmark, Share2, MoreVertical } from 'lucide-react';
 import type { FeedPost } from '../../types';
 import { useFeedStore } from '../../store/useFeedStore';
@@ -10,7 +10,20 @@ interface PostCardProps {
 
 const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
   const { likePost, savePost } = useFeedStore();
-  const likeColor = useColorModeValue('#CB5C45', '#D57965');
+  const likeColor = '#ed4956'; // Instagram red
+  const toast = useToast();
+
+  const handleSave = () => {
+    savePost(post.id);
+    if (!post.isSaved) {
+      toast({
+        title: "Saved to collections",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <Card w="100%" mx="auto" mb={6}>
@@ -48,7 +61,7 @@ const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
 
       <CardFooter justify="space-between" flexWrap="wrap" px={{ base: 2, md: 4 }}>
         <HStack spacing={{ base: 1, md: 4 }}>
-          <Button size={{ base: "sm", md: "md" }} variant="ghost" leftIcon={<Heart size={20} fill={post.isLiked ? "currentColor" : "none"} color={post.isLiked ? likeColor : "currentColor"} />} onClick={() => likePost(post.id)}>
+          <Button size={{ base: "sm", md: "md" }} variant="ghost" leftIcon={<Heart size={20} fill={post.isLiked ? likeColor : "none"} color={post.isLiked ? likeColor : "currentColor"} />} onClick={() => likePost(post.id)} _hover={{ color: likeColor }}>
             {post.likes}
           </Button>
           <Button size={{ base: "sm", md: "md" }} variant="ghost" leftIcon={<MessageCircle size={20} />}>
@@ -62,7 +75,7 @@ const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
           variant="ghost" 
           aria-label="Save post" 
           icon={<Bookmark size={20} fill={post.isSaved ? "currentColor" : "none"} />} 
-          onClick={() => savePost(post.id)} 
+          onClick={handleSave} 
         />
       </CardFooter>
     </Card>
