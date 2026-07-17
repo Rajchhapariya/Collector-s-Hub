@@ -130,6 +130,16 @@ export const mockListings: Collectible[] = [
     sellerName: 'PhilatelyKing',
     location: 'New Delhi, India',
     image: '/images/mughal_stamp.png',
+  },
+  {
+    id: '14',
+    title: 'Antique Brass Kerala Uruli (Vessel)',
+    category: 'Antiques',
+    condition: 'Very Good',
+    price: 18500,
+    sellerName: 'DeccanHeritage',
+    location: 'Thrissur, India',
+    image: '/images/diyas.png',
   }
 ];
 
