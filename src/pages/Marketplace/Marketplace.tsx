@@ -112,6 +112,8 @@ const Marketplace = () => {
             <option value="Art">Art</option>
             <option value="Jewelry">Jewelry</option>
             <option value="Crafts">Crafts</option>
+            <option value="Coins">Coins</option>
+            <option value="Stamps">Stamps</option>
           </Select>
 
           <Select placeholder="All Conditions" maxW={{ base: '100%', md: '200px' }} value={condition} onChange={(e) => setCondition(e.target.value)}>

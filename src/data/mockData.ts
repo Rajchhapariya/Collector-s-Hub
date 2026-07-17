@@ -140,5 +140,43 @@ export const mockFeedPosts: FeedPost[] = [
     category: 'Art',
     likes: 56,
     comments: 3,
+  },
+  {
+    id: 'p4',
+    user: {
+      name: 'Vikram Singh',
+      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+    },
+    image: '/images/indian_coin.png',
+    caption: 'Finally added this rare 1918 1 Rupee Coin to my numismatic collection. The silver condition is impeccable! 🪙 #VintageCoins #Numismatics',
+    category: 'Coins',
+    likes: 215,
+    comments: 18,
+    isSaved: true,
+  },
+  {
+    id: 'p5',
+    user: {
+      name: 'Neha Gupta',
+      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+    },
+    image: '/images/madhubani_art.png',
+    caption: 'Just unboxed this gorgeous Madhubani canvas art. The traditional patterns add so much life to my living room. 🖼️',
+    category: 'Art',
+    likes: 432,
+    comments: 27,
+    isLiked: true,
+  },
+  {
+    id: 'p6',
+    user: {
+      name: 'Arjun Reddy',
+      avatar: 'https://randomuser.me/api/portraits/men/57.jpg',
+    },
+    image: '/images/kundan_necklace.png',
+    caption: 'Acquired this breathtaking royal Kundan necklace for an upcoming family wedding. The craftsmanship of Rajputana jewelers is truly unmatched. ✨',
+    category: 'Jewelry',
+    likes: 890,
+    comments: 54,
   }
 ];
