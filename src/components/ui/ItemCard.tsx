@@ -28,7 +28,7 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
   const isList = viewMode === 'list';
 
   return (
-    <Card h="100%" direction={isList ? 'row' : 'column'} overflow="hidden">
+    <Card h="100%" direction={isList ? { base: 'column', lg: 'row' } : 'column'} overflow="hidden">
       <CardBody p={0} display="flex" flexDir={isList ? 'row' : 'column'}>
         <Image
           src={item.image}
@@ -64,8 +64,8 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
       
       {!isList && <Divider mt="4" borderColor="whiteAlpha.500" _dark={{ borderColor: "whiteAlpha.200" }} />}
       
-      <CardFooter pt={isList ? 0 : 4} px={{ base: 3, md: 5 }} pb={5} display={isList ? 'flex' : 'block'}>
-        <Flex w="100%" gap={3} justify={isList ? 'flex-end' : 'flex-start'} align={isList ? 'center' : 'stretch'}>
+      <CardFooter pt={isList ? { base: 2, lg: 0 } : 4} px={{ base: 3, md: 5 }} pb={5} display={isList ? 'flex' : 'block'}>
+        <Flex w="100%" gap={3} justify={isList ? { base: 'flex-start', lg: 'flex-end' } : 'flex-start'} align={isList ? 'center' : 'stretch'}>
           {isList && (
             <Text fontWeight="bold" color="brand.600" _dark={{ color: "brand.300" }} mr={4}>
               ₹{item.price.toLocaleString('en-IN')}

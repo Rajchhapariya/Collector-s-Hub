@@ -18,7 +18,7 @@ const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
   const isList = viewMode === 'list';
 
   return (
-    <Card h="100%" direction={isList ? 'row' : 'column'} overflow="hidden">
+    <Card h="100%" direction={isList ? { base: 'column', lg: 'row' } : 'column'} overflow="hidden">
       <CardBody p={0} display="flex" flexDir={isList ? 'row' : 'column'}>
         <Image
           src={item.image}
