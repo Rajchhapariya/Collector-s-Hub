@@ -1,4 +1,4 @@
-import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, Flex, Badge, Menu, MenuButton, MenuList, MenuItem, IconButton, Box } from '@chakra-ui/react';
+import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, Flex, Badge, Menu, MenuButton, MenuList, MenuItem, IconButton, Box, Portal } from '@chakra-ui/react';
 import { MoreVertical, Trash2, ArrowRightLeft } from 'lucide-react';
 import type { CollectionItem } from '../../types';
 import { useCollectionStore } from '../../store/useCollectionStore';
@@ -18,45 +18,47 @@ const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
   const isList = viewMode === 'list';
 
   return (
-    <Card h="100%" direction={isList ? { base: 'column', sm: 'row' } : 'column'} overflow="hidden">
-      <CardBody p={0} display={isList ? 'flex' : 'block'} flexDir={isList ? { base: 'column', sm: 'row' } : 'column'}>
+    <Card h="100%" direction={isList ? 'row' : 'column'} overflow="hidden">
+      <CardBody p={0} display="flex" flexDir={isList ? 'row' : 'column'}>
         <Image
           src={item.image}
           fallbackSrc="https://placehold.co/500x500/E5DFD5/873928?text=Loading..."
           alt={item.title}
-          height={isList ? { base: "160px", sm: "100%" } : "160px"}
-          width={isList ? { base: "100%", sm: "200px" } : "100%"}
+          height={isList ? { base: "140px", sm: "100%" } : "160px"}
+          width={isList ? { base: "120px", sm: "200px" } : "100%"}
           objectFit="contain"
           bg="transparent"
           _dark={{ bg: "transparent" }}
           loading="lazy"
         />
-        <Stack mt={isList ? { base: 4, sm: 0 } : "4"} spacing="3" px={{ base: 3, md: 4 }} py={isList ? { sm: 3 } : 0} flex="1" justify="space-between">
+        <Stack mt={isList ? 0 : "4"} spacing="3" px={{ base: 3, md: 4 }} py={isList ? { base: 2, sm: 3 } : 0} flex="1" justify="space-between">
           <Box>
             <Flex justify="space-between" align="start" gap={2}>
-              <Heading size="md" noOfLines={2} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
+              <Heading size={{ base: isList ? "sm" : "md", sm: "md" }} noOfLines={2} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
               <Menu>
                 <MenuButton as={IconButton} icon={<MoreVertical size={20} />} variant="ghost" size="sm" flexShrink={0} mt="-1" mr="-2" />
-                <MenuList zIndex="popover">
-                  {item.collectionType !== 'Owned' && (
-                    <MenuItem icon={<ArrowRightLeft size={16} />} onClick={() => handleMove('Owned')}>
-                      Move to Owned
+                <Portal>
+                  <MenuList zIndex="popover">
+                    {item.collectionType !== 'Owned' && (
+                      <MenuItem icon={<ArrowRightLeft size={16} />} onClick={() => handleMove('Owned')}>
+                        Move to Owned
+                      </MenuItem>
+                    )}
+                    {item.collectionType !== 'Wishlist' && (
+                      <MenuItem icon={<ArrowRightLeft size={16} />} onClick={() => handleMove('Wishlist')}>
+                        Move to Wishlist
+                      </MenuItem>
+                    )}
+                    {item.collectionType !== 'Selling' && (
+                      <MenuItem icon={<ArrowRightLeft size={16} />} onClick={() => handleMove('Selling')}>
+                        Move to Selling
+                      </MenuItem>
+                    )}
+                    <MenuItem icon={<Trash2 size={16} />} color="red.500" onClick={() => removeItem(item.id)}>
+                      Remove
                     </MenuItem>
-                  )}
-                  {item.collectionType !== 'Wishlist' && (
-                    <MenuItem icon={<ArrowRightLeft size={16} />} onClick={() => handleMove('Wishlist')}>
-                      Move to Wishlist
-                    </MenuItem>
-                  )}
-                  {item.collectionType !== 'Selling' && (
-                    <MenuItem icon={<ArrowRightLeft size={16} />} onClick={() => handleMove('Selling')}>
-                      Move to Selling
-                    </MenuItem>
-                  )}
-                  <MenuItem icon={<Trash2 size={16} />} color="red.500" onClick={() => removeItem(item.id)}>
-                    Remove
-                  </MenuItem>
-                </MenuList>
+                  </MenuList>
+                </Portal>
               </Menu>
             </Flex>
             <Flex gap={2} wrap="wrap" mt={2}>
