@@ -29,22 +29,25 @@ const Layout = () => {
       <Box as="nav" bg={colorMode === 'dark' ? 'gray.800' : 'white'} boxShadow="sm" position="sticky" top={0} zIndex={10}>
         <Container maxW="container.xl">
           <Flex h={16} alignItems="center" justify="space-between">
-            <HStack spacing={8} alignItems="center">
+            {/* Left Side: Logo */}
+            <Flex flex={{ base: 0, md: 1 }} justify="flex-start">
               <ChakraLink as={RouterLink} to="/" _hover={{ textDecoration: 'none' }}>
                 <Flex alignItems="center" gap={2}>
                   <Box color="brand.500"><ShoppingBag size={28} /></Box>
                   <Heading size="md" color="brand.500" letterSpacing="tight">Collector's Hub</Heading>
                 </Flex>
               </ChakraLink>
-              
-              <HStack as="nav" spacing={2} display={{ base: 'none', md: 'flex' }}>
-                <NavLink to="/marketplace">Marketplace</NavLink>
-                <NavLink to="/feed">Community Feed</NavLink>
-                <NavLink to="/collection">My Collection</NavLink>
-              </HStack>
+            </Flex>
+            
+            {/* Center: Nav Links */}
+            <HStack as="nav" spacing={2} display={{ base: 'none', md: 'flex' }} justify="center">
+              <NavLink to="/marketplace">Marketplace</NavLink>
+              <NavLink to="/feed">Community Feed</NavLink>
+              <NavLink to="/collection">My Collection</NavLink>
             </HStack>
 
-            <Flex alignItems="center" gap={4}>
+            {/* Right Side: Icons */}
+            <Flex flex={{ base: 0, md: 1 }} justify="flex-end" alignItems="center" gap={4}>
               <IconButton
                 aria-label="Toggle Dark Mode"
                 icon={colorMode === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
