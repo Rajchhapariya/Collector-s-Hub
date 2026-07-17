@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, IconButton, useColorMode, Container, Heading, Link as ChakraLink, useColorModeValue, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import { Box, Flex, HStack, IconButton, useColorMode, Container, Link as ChakraLink, useColorModeValue, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { Moon, Sun, ShoppingBag, Menu as MenuIcon } from 'lucide-react';
 import { Link as RouterLink, Outlet, useLocation } from 'react-router-dom';
 
