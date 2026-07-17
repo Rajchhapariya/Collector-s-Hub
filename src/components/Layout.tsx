@@ -32,11 +32,13 @@ const Layout = () => {
             {/* Left Side: Logo */}
             <Flex flex={{ base: 0, md: 1 }} justify="flex-start">
               <ChakraLink as={RouterLink} to="/" _hover={{ textDecoration: 'none' }}>
-                <Flex alignItems="center" gap={2.5}>
-                  <Box color="brand.500" display="flex" mt="-2px">
+                <Flex alignItems="center" gap={2.5} h="full">
+                  <Box color="brand.500" display="flex" alignItems="center">
                     <ShoppingBag size={24} strokeWidth={2.5} />
                   </Box>
-                  <Heading size="md" color="brand.500" letterSpacing="tight">Collector's Hub</Heading>
+                  <Heading size="md" color="brand.500" letterSpacing="tight" lineHeight="1">
+                    Collector's Hub
+                  </Heading>
                 </Flex>
               </ChakraLink>
             </Flex>
