@@ -61,6 +61,46 @@ export const mockListings: Collectible[] = [
     location: 'Srinagar, India',
     image: '/images/shawl.png',
   },
+  {
+    id: '7',
+    title: 'Rare Vintage 1 Rupee Coin (1918)',
+    category: 'Coins',
+    condition: 'Good',
+    price: 8500,
+    sellerName: 'NumismaticsIndia',
+    location: 'Mumbai, India',
+    image: '/images/indian_coin.png',
+  },
+  {
+    id: '8',
+    title: 'Antique Mughal Architecture Stamp',
+    category: 'Stamps',
+    condition: 'Mint',
+    price: 3200,
+    sellerName: 'PhilatelyKing',
+    location: 'New Delhi, India',
+    image: '/images/mughal_stamp.png',
+  },
+  {
+    id: '9',
+    title: 'Traditional Madhubani Canvas Art',
+    category: 'Art',
+    condition: 'New',
+    price: 18000,
+    sellerName: 'MithilaCreators',
+    location: 'Patna, India',
+    image: '/images/madhubani_art.png',
+  },
+  {
+    id: '10',
+    title: 'Royal Kundan Gold Necklace',
+    category: 'Jewelry',
+    condition: 'Excellent',
+    price: 125000,
+    sellerName: 'RajputanaJewels',
+    location: 'Jodhpur, India',
+    image: '/images/kundan_necklace.png',
+  }
 ];
 
 export const mockFeedPosts: FeedPost[] = [
