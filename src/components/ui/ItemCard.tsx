@@ -28,14 +28,14 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
   const isList = viewMode === 'list';
 
   return (
-    <Card h="100%" direction={isList ? { base: 'column', sm: 'row' } : 'column'} overflow="hidden">
-      <CardBody p={0} display={isList ? 'flex' : 'block'} flexDir={isList ? { base: 'column', sm: 'row' } : 'column'}>
+    <Card h="100%" direction={isList ? 'row' : 'column'} overflow="hidden">
+      <CardBody p={0} display="flex" flexDir={isList ? 'row' : 'column'}>
         <Image
           src={item.image}
           fallbackSrc="https://placehold.co/500x500/E5DFD5/873928?text=Loading..."
           alt={item.title}
-          height={isList ? { base: "180px", sm: "100%" } : { base: "180px", md: "220px" }}
-          width={isList ? { base: "100%", sm: "200px", md: "250px" } : "100%"}
+          height={isList ? { base: "140px", sm: "100%" } : { base: "180px", md: "220px" }}
+          width={isList ? { base: "120px", sm: "200px", md: "250px" } : "100%"}
           objectFit="contain"
           bg="transparent"
           _dark={{ bg: "transparent" }}
@@ -43,14 +43,14 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
           onClick={() => onOpenDetails?.(item)}
           loading="lazy"
         />
-        <Stack mt={isList ? { base: 4, sm: 0 } : "4"} spacing="3" px={{ base: 3, md: 5 }} py={isList ? { sm: 4 } : 0} flex="1">
+        <Stack mt={isList ? 0 : "4"} spacing={isList ? { base: 1, sm: 3 } : 3} px={{ base: 3, md: 5 }} py={isList ? { base: 3, sm: 4 } : 0} flex="1" justify="center">
           <Stack spacing={1} cursor={onOpenDetails ? "pointer" : "default"} onClick={() => onOpenDetails?.(item)}>
-            <Heading size="md" noOfLines={2} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
-            <Text color="brand.600" _dark={{ color: "brand.300" }} fontSize="xl" fontWeight="bold">
+            <Heading size={{ base: isList ? "sm" : "md", sm: "md" }} noOfLines={2} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
+            <Text color="brand.600" _dark={{ color: "brand.300" }} fontSize={{ base: isList ? "lg" : "xl", sm: "xl" }} fontWeight="bold">
               ₹{item.price.toLocaleString('en-IN')}
             </Text>
           </Stack>
-          <Flex gap={2} wrap="wrap">
+          <Flex gap={2} wrap="wrap" display={isList ? { base: 'none', sm: 'flex' } : 'flex'}>
             <Badge colorScheme="orange" variant="subtle">{item.category}</Badge>
             <Badge colorScheme={item.condition === 'New' ? 'green' : 'yellow'} variant="outline">
               {item.condition}

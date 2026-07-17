@@ -46,8 +46,8 @@ const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
   return (
     <Card w="100%" mx="auto" mb={6}>
       <CardHeader>
-        <Flex gap={4}>
-          <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+        <Flex justify="space-between" align="flex-start" gap={2}>
+          <Flex flex="1" gap="3" alignItems="center">
             <Avatar name={post.user.name} src={post.user.avatar} size={{ base: "sm", md: "md" }} />
             <Box>
               <Heading size="sm" color="earth.900" _dark={{ color: "earth.50" }}>{post.user.name}</Heading>
