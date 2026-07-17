@@ -109,7 +109,7 @@ export const mockListings: Collectible[] = [
     price: 5200,
     sellerName: 'KeralaWoodCrafts',
     location: 'Kochi, India',
-    image: '/images/elephant.png',
+    image: 'https://loremflickr.com/500/500/india,woodcarving,elephant?lock=11',
   },
   {
     id: '12',
@@ -119,7 +119,7 @@ export const mockListings: Collectible[] = [
     price: 4100,
     sellerName: 'NumismaticsIndia',
     location: 'Pune, India',
-    image: '/images/indian_coin.png',
+    image: 'https://loremflickr.com/500/500/vintage,indian,coin?lock=12',
   },
   {
     id: '13',
@@ -129,7 +129,7 @@ export const mockListings: Collectible[] = [
     price: 9500,
     sellerName: 'PhilatelyKing',
     location: 'New Delhi, India',
-    image: '/images/mughal_stamp.png',
+    image: 'https://loremflickr.com/500/500/india,postage,stamp?lock=13',
   },
   {
     id: '14',
@@ -139,7 +139,7 @@ export const mockListings: Collectible[] = [
     price: 18500,
     sellerName: 'DeccanHeritage',
     location: 'Thrissur, India',
-    image: '/images/diyas.png',
+    image: 'https://loremflickr.com/500/500/antique,brass,bowl?lock=14',
   }
 ];
 
@@ -185,7 +185,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p4',
     user: {
       name: 'Bidyut Borgohain',
-      avatar: 'https://randomuser.me/api/portraits/men/43.jpg',
+      avatar: 'https://loremflickr.com/150/150/assam,portrait,man?lock=40',
     },
     image: '/images/indian_coin.png',
     caption: 'Finally added this rare 1918 1 Rupee Coin to my numismatic collection. The silver condition is impeccable! 🪙 #VintageCoins #Numismatics',
@@ -198,7 +198,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p5',
     user: {
       name: 'Lalrinzuali',
-      avatar: 'https://randomuser.me/api/portraits/women/47.jpg',
+      avatar: 'https://loremflickr.com/150/150/mizoram,portrait,woman?lock=50',
     },
     image: '/images/madhubani_art.png',
     caption: 'Just unboxed this gorgeous Madhubani canvas art. The traditional patterns add so much life to my living room. 🖼️',
@@ -211,7 +211,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p6',
     user: {
       name: 'Temsula Ao',
-      avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
+      avatar: 'https://loremflickr.com/150/150/nagaland,portrait,woman?lock=60',
     },
     image: '/images/kundan_necklace.png',
     caption: 'Acquired this breathtaking royal Kundan necklace for an upcoming family wedding. The craftsmanship of Rajputana jewelers is truly unmatched. ✨',
@@ -223,9 +223,9 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p7',
     user: {
       name: 'Phuntsok Dorjee',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+      avatar: 'https://loremflickr.com/150/150/sikkim,portrait,man?lock=70',
     },
-    image: '/images/elephant.png',
+    image: 'https://loremflickr.com/500/500/india,woodcarving,elephant?lock=11',
     caption: 'I am mesmerized by the intricate details on this Mysore hand-carved wooden elephant. A true testament to Indian craftsmanship! 🐘✨',
     category: 'Crafts',
     likes: 310,
@@ -236,9 +236,9 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p8',
     user: {
       name: 'Ritu Rajkonwar',
-      avatar: 'https://randomuser.me/api/portraits/men/22.jpg',
+      avatar: 'https://loremflickr.com/150/150/northeast,india,portrait?lock=80',
     },
-    image: '/images/diyas.png',
+    image: 'https://loremflickr.com/500/500/antique,brass,bowl?lock=14',
     caption: 'Restoring these vintage brass diyas from Jaipur to their former glory. The patina on these antiques is just incredible. 🪔 #Antiques #Heritage',
     category: 'Antiques',
     likes: 542,
