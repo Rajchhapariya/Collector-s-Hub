@@ -1,5 +1,5 @@
-import { Box, Flex, HStack, IconButton, useColorMode, Container, Heading, Link as ChakraLink, useColorModeValue, Button } from '@chakra-ui/react';
-import { Moon, Sun, ShoppingBag } from 'lucide-react';
+import { Box, Flex, HStack, IconButton, useColorMode, Container, Heading, Link as ChakraLink, useColorModeValue, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import { Moon, Sun, ShoppingBag, Menu as MenuIcon } from 'lucide-react';
 import { Link as RouterLink, Outlet, useLocation } from 'react-router-dom';
 
 const Layout = () => {
@@ -67,7 +67,16 @@ const Layout = () => {
                 variant="ghost"
                 isRound
               />
-              <Button display={{ base: 'flex', md: 'none' }} variant="ghost">Menu</Button>
+              <Box display={{ base: 'block', md: 'none' }}>
+                <Menu>
+                  <MenuButton as={IconButton} icon={<MenuIcon size={20} />} variant="ghost" aria-label="Open menu" />
+                  <MenuList bg={colorMode === 'dark' ? 'earth.900' : 'white'} borderColor={colorMode === 'dark' ? 'whiteAlpha.200' : 'earth.200'}>
+                    <MenuItem as={RouterLink} to="/marketplace" bg="transparent" _hover={{ bg: colorMode === 'dark' ? 'whiteAlpha.200' : 'earth.100' }}>Marketplace</MenuItem>
+                    <MenuItem as={RouterLink} to="/feed" bg="transparent" _hover={{ bg: colorMode === 'dark' ? 'whiteAlpha.200' : 'earth.100' }}>Community Feed</MenuItem>
+                    <MenuItem as={RouterLink} to="/collection" bg="transparent" _hover={{ bg: colorMode === 'dark' ? 'whiteAlpha.200' : 'earth.100' }}>My Collection</MenuItem>
+                  </MenuList>
+                </Menu>
+              </Box>
             </Flex>
           </Flex>
         </Container>

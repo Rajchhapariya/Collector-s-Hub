@@ -1,46 +1,57 @@
 # Collector's Hub
 
-A modern, beautifully designed web application for discovering, sharing, and managing authentic Indian collectibles, ranging from Kanjeevaram Silks to Vintage Brass Diyas.
+Welcome to **Collector's Hub**, a responsive web application where users can discover collectible items through a marketplace, browse community posts, and manage their personal collection. 
 
-## 🚀 Setup Instructions
+This project was built as a React Web Developer Internship Assignment, focusing on high-quality code, an intuitive user experience, and a stunning "premium" aesthetic.
 
-1. **Prerequisites**: Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
-2. **Install Dependencies**: Run the following command in the root directory:
+## Setup Instructions
+
+This project is built using React, Vite, and TypeScript. To run it locally:
+
+1. **Clone the repository** (if applicable) and navigate to the project directory:
+   ```bash
+   cd collectors-hub
+   ```
+
+2. **Install dependencies**:
    ```bash
    npm install
    ```
-3. **Run the Development Server**:
+
+3. **Run the development server**:
    ```bash
    npm run dev
    ```
-4. **Build for Production**:
+
+4. **Build for production** (optional):
    ```bash
    npm run build
    ```
 
-## 🤔 Assumptions Made
-- **Mock API**: Since there is no actual backend, network latency is simulated using a simple `setTimeout` wrapper to demonstrate loading states (Skeletons).
-- **Authentication**: It is assumed that the user is already authenticated. The mock data treats the user as a predefined entity for the sake of the Community Feed.
-- **Data Persistence**: Because there is no database, we assumed the user would still want their data saved. Thus, all user-generated state (Collections, Wishlists, Likes, Saves) is persisted locally in the browser's `localStorage`.
+Open your browser and visit `http://localhost:5173/` (or the URL provided by Vite) to view the application.
 
-## 📦 Libraries Used
-- **React 18**: The core frontend library.
-- **TypeScript**: For robust type-safety and developer experience.
-- **Vite**: For incredibly fast development server and optimized production builds.
-- **Chakra UI**: For accessible, themeable, and responsive UI components.
-- **Zustand**: A small, fast, and scalable bearbones state-management solution used for our global stores (`useFeedStore`, `useCollectionStore`).
-- **React Router (react-router-dom)**: For seamless SPA navigation.
-- **Lucide React**: For clean, modern SVG icons.
+## Libraries Used
 
-## ✨ Additional (Bonus) Features Implemented
-We went above and beyond the basic requirements to implement several of the requested bonus features:
-1. **Dark Mode**: Fully supported out-of-the-box. The entire application seamlessly switches themes.
-2. **Skeleton Loaders**: Beautiful pulsating skeletons display while the mock API "fetches" the data.
-3. **Favorites/Wishlist**: You can save posts on the Feed and add items to your Wishlist from the Marketplace.
-4. **Local Persistence**: If you refresh the page or leave and come back, your Wishlist, Owned items, and Liked posts remain saved via `localStorage`.
-5. **Optimistic UI Updates**: Liking a post or adding an item to your bag reflects instantly in the UI.
-6. **Lazy Loading Images**: Implemented native lazy loading on all heavy asset images for better performance.
-7. **Advanced Search & Filtering**: You can dynamically filter the Marketplace and your Collection by Categories, Conditions, and Search terms.
+- **React & Vite**: Core framework and build tool for a fast, modern development experience.
+- **TypeScript**: Ensures type safety, reducing bugs and improving maintainability.
+- **Chakra UI (v2) & Framer Motion**: Provides accessible, composable UI components and smooth micro-animations. Chosen to easily implement the glassmorphic aesthetic.
+- **React Router DOM**: For seamless client-side routing between the Marketplace, Community Feed, and My Collection pages.
+- **Zustand**: A small, fast, and scalable bearbones state-management solution used for managing global app state (Collection, Feed interactions).
+- **Lucide React**: For beautiful, crisp, and consistent SVG icons.
 
-## 📱 Responsive Design & Architecture
-The application was built "Mobile-First", utilizing Chakra UI's responsive array props (e.g., `base`, `md`, `lg`) to ensure the grid layouts naturally drop into single columns on phones while expanding gracefully on desktop monitors without any horizontal scrolling. Code is strictly organized by concerns (`/components`, `/pages`, `/store`, `/services`, `/types`) to ensure scalability.
+## Assumptions Made
+
+- **Authentication**: As per the requirements, authentication is bypassed. The user is assumed to be an authenticated user named "Demo User" by default.
+- **Backend / Data Source**: A mock JSON data structure is used. An API service (`src/services/api.ts`) simulates network latency with `setTimeout` to demonstrate loading states (skeletons).
+- **Data Persistence**: It was assumed that users would want to keep their collections and liked/saved posts across browser reloads. Thus, Zustand state is persisted to `localStorage`.
+- **Aesthetics**: It was assumed that a "premium" feel was highly desired. A custom glassmorphic theme with a dynamic radial background was implemented to provide a "Wow" factor right out of the gate.
+
+## Additional Features Implemented
+
+1. **Premium Glassmorphic UI**: The entire application uses a unified frosted glass design language, complete with subtle drop shadows, fluid hover animations, and a responsive radial background gradient.
+2. **Global Debounced Search**: Search bars in the Marketplace, Feed, and Collection pages utilize a custom `useDebounce` hook to prevent rapid re-rendering and simulate optimized API calls.
+3. **Persistent State Management**: Adding items to the collection or liking posts persists across page reloads via `localStorage`.
+4. **Grid vs. List View Toggle**: The Marketplace supports toggling between a dense Grid view and a detailed List view, giving users flexibility in how they browse.
+5. **Dark Mode Integration**: The application includes a seamlessly integrated Dark Mode that respects the user's system preferences by default and automatically updates the glassmorphic styling for low-light environments.
+6. **Fully Responsive Design**: The UI gracefully degrades from large desktop monitors down to mobile screens using CSS Grid/Flexbox and Chakra UI's responsive array syntax.
+7. **Empty States**: Beautifully designed empty states guide the user when their collection is empty or a search yields no results.

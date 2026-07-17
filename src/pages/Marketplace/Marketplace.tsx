@@ -128,7 +128,7 @@ const Marketplace = () => {
             <option value="price-asc">Sort by: Low to High</option>
           </Select>
 
-          <HStack spacing={2} display={{ base: 'none', md: 'flex' }}>
+          <HStack spacing={2}>
             <IconButton aria-label="Grid view" icon={<LayoutGrid size={20} />} variant={viewMode === 'grid' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('grid')} />
             <IconButton aria-label="List view" icon={<List size={20} />} variant={viewMode === 'list' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('list')} />
           </HStack>
