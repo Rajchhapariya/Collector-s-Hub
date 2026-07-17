@@ -81,19 +81,59 @@ const theme = extendTheme({
     Card: {
       baseStyle: (props: any) => ({
         container: {
-          borderRadius: '2xl',
-          boxShadow: 'none',
+          borderRadius: '3xl',
+          boxShadow: 'xl',
           border: '1px solid',
-          borderColor: props.colorMode === 'dark' ? 'whiteAlpha.200' : 'earth.200',
-          bg: props.colorMode === 'dark' ? 'earth.800' : 'white',
+          borderColor: props.colorMode === 'dark' ? 'whiteAlpha.200' : 'whiteAlpha.500',
+          bg: props.colorMode === 'dark' ? 'whiteAlpha.100' : 'whiteAlpha.800',
+          backdropFilter: 'blur(16px)',
           overflow: 'hidden',
-          transition: 'all 0.2s ease-in-out',
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           _hover: {
-            transform: 'translateY(-2px)',
-            borderColor: props.colorMode === 'dark' ? 'brand.400' : 'brand.500',
+            transform: 'translateY(-4px)',
+            boxShadow: '2xl',
+            borderColor: props.colorMode === 'dark' ? 'brand.400' : 'brand.300',
           }
         },
       }),
+    },
+    Modal: {
+      baseStyle: (props: any) => ({
+        dialog: {
+          borderRadius: '3xl',
+          bg: props.colorMode === 'dark' ? 'rgba(44, 39, 35, 0.9)' : 'rgba(249, 248, 246, 0.9)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid',
+          borderColor: props.colorMode === 'dark' ? 'whiteAlpha.200' : 'whiteAlpha.500',
+          boxShadow: '2xl',
+        }
+      })
+    },
+    Input: {
+      defaultProps: { focusBorderColor: 'brand.500' },
+      variants: {
+        outline: (props: any) => ({
+          field: {
+            borderRadius: 'xl',
+            bg: props.colorMode === 'dark' ? 'whiteAlpha.100' : 'whiteAlpha.500',
+            borderColor: props.colorMode === 'dark' ? 'whiteAlpha.200' : 'whiteAlpha.500',
+            _hover: { borderColor: 'brand.300' },
+          }
+        })
+      }
+    },
+    Select: {
+      defaultProps: { focusBorderColor: 'brand.500' },
+      variants: {
+        outline: (props: any) => ({
+          field: {
+            borderRadius: 'xl',
+            bg: props.colorMode === 'dark' ? 'whiteAlpha.100' : 'whiteAlpha.500',
+            borderColor: props.colorMode === 'dark' ? 'whiteAlpha.200' : 'whiteAlpha.500',
+            _hover: { borderColor: 'brand.300' },
+          }
+        })
+      }
     },
     Badge: {
       baseStyle: {

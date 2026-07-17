@@ -27,8 +27,8 @@ const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
           height={isList ? { base: "160px", sm: "100%" } : "160px"}
           width={isList ? { base: "100%", sm: "200px" } : "100%"}
           objectFit="contain"
-          bg="earth.50"
-          _dark={{ bg: "earth.900" }}
+          bg="transparent"
+          _dark={{ bg: "transparent" }}
           loading="lazy"
         />
         <Stack mt={isList ? { base: 4, sm: 0 } : "4"} spacing="3" px={{ base: 3, md: 4 }} py={isList ? { sm: 3 } : 0} flex="1" justify="space-between">
@@ -80,7 +80,7 @@ const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
           )}
         </Stack>
       </CardBody>
-      {!isList && <Divider mt="4" borderColor="earth.200" _dark={{ borderColor: "whiteAlpha.200" }} />}
+      {!isList && <Divider mt="4" borderColor="whiteAlpha.500" _dark={{ borderColor: "whiteAlpha.200" }} />}
       {!isList && (
         <CardFooter pt={2} px={{ base: 3, md: 4 }} pb={4}>
           <Box>

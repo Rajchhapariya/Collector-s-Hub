@@ -54,14 +54,12 @@ const Feed = () => {
             placeholder="Search posts or users..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            bg="white" _dark={{ bg: 'earth.800' }}
           />
         </InputGroup>
         <Select 
           w={{ base: '100%', md: '200px' }} 
           value={category} 
           onChange={(e) => setCategory(e.target.value)}
-          bg="white" _dark={{ bg: 'earth.800' }}
         >
           <option value="All">All Categories</option>
           <option value="Textiles">Textiles</option>
@@ -75,7 +73,7 @@ const Feed = () => {
       {loading ? (
         <VStack spacing={6}>
           {[1, 2].map(i => (
-            <Box key={i} w="100%" maxW="2xl" p={6} border="1px solid" borderColor="earth.200" borderRadius="2xl" bg="white" _dark={{ bg: 'earth.800', borderColor: 'whiteAlpha.200' }}>
+            <Box key={i} w="100%" maxW="2xl" p={6} border="1px solid" borderColor="earth.200" borderRadius="2xl" _dark={{ borderColor: 'whiteAlpha.200' }}>
               <Box display="flex" gap={4} mb={4}>
                 <SkeletonCircle size="12" />
                 <Box flex="1" mt={2}>
@@ -103,7 +101,7 @@ const Feed = () => {
       {/* Post Details Modal */}
       <Modal isOpen={isOpen} onClose={onClose} size="3xl" isCentered>
         <ModalOverlay />
-        <ModalContent bg="white" _dark={{ bg: 'earth.900' }}>
+        <ModalContent>
           <ModalHeader pb={0}>Post Details</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>

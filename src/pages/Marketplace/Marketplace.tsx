@@ -103,11 +103,10 @@ const Marketplace = () => {
               placeholder="Search collectibles..." 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              bg="white" _dark={{ bg: 'earth.800' }}
             />
           </InputGroup>
           
-          <Select placeholder="All Categories" maxW={{ base: '100%', md: '200px' }} value={category} onChange={(e) => setCategory(e.target.value)} bg="white" _dark={{ bg: 'earth.800' }}>
+          <Select placeholder="All Categories" maxW={{ base: '100%', md: '200px' }} value={category} onChange={(e) => setCategory(e.target.value)}>
             <option value="Textiles">Textiles</option>
             <option value="Antiques">Antiques</option>
             <option value="Art">Art</option>
@@ -115,7 +114,7 @@ const Marketplace = () => {
             <option value="Crafts">Crafts</option>
           </Select>
 
-          <Select placeholder="All Conditions" maxW={{ base: '100%', md: '200px' }} value={condition} onChange={(e) => setCondition(e.target.value)} bg="white" _dark={{ bg: 'earth.800' }}>
+          <Select placeholder="All Conditions" maxW={{ base: '100%', md: '200px' }} value={condition} onChange={(e) => setCondition(e.target.value)}>
             <option value="New">New</option>
             <option value="Like New">Like New</option>
             <option value="Excellent">Excellent</option>
@@ -123,7 +122,7 @@ const Marketplace = () => {
             <option value="Good">Good</option>
           </Select>
 
-          <Select maxW={{ base: '100%', md: '200px' }} value={sortBy} onChange={(e) => setSortBy(e.target.value)} ml={{ md: 'auto' }} bg="white" _dark={{ bg: 'earth.800' }}>
+          <Select maxW={{ base: '100%', md: '200px' }} value={sortBy} onChange={(e) => setSortBy(e.target.value)} ml={{ md: 'auto' }}>
             <option value="newest">Sort by: Newest</option>
             <option value="price-desc">Sort by: High to Low</option>
             <option value="price-asc">Sort by: Low to High</option>
@@ -157,12 +156,12 @@ const Marketplace = () => {
 
       {/* Product Details Modal */}
       <Modal isOpen={isOpen} onClose={onClose} size="4xl" isCentered>
-        <ModalOverlay />
-        <ModalContent bg="white" _dark={{ bg: 'earth.900' }} overflow="hidden" borderRadius="2xl">
+        <ModalOverlay backdropFilter="blur(4px)" />
+        <ModalContent overflow="hidden">
           <ModalCloseButton zIndex={2} />
           {selectedItem && (
             <Flex direction={{ base: 'column', md: 'row' }}>
-              <Box flex={{ base: "none", md: 1 }} bg="earth.50" _dark={{ bg: "earth.900" }} p={6} display="flex" alignItems="center" justifyContent="center">
+              <Box flex={{ base: "none", md: 1 }} bg="blackAlpha.50" _dark={{ bg: "blackAlpha.300" }} p={6} display="flex" alignItems="center" justifyContent="center">
                 <Image 
                   src={selectedItem.image} 
                   alt={selectedItem.title} 

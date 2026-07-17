@@ -58,14 +58,13 @@ const Collection = () => {
             <Search color="gray.300" size={20} />
           </InputLeftElement>
           <Input 
-            placeholder="Search your collection..." 
+            placeholder="Search in collection..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            bg="white" _dark={{ bg: 'earth.800' }}
           />
         </InputGroup>
         
-        <Select placeholder="All Categories" maxW={{ base: '100%', md: '200px' }} value={category} onChange={(e) => setCategory(e.target.value)} bg="white" _dark={{ bg: 'earth.800' }}>
+        <Select placeholder="All Categories" maxW={{ base: '100%', md: '200px' }} value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="Textiles">Textiles</option>
           <option value="Antiques">Antiques</option>
           <option value="Art">Art</option>
@@ -73,10 +72,10 @@ const Collection = () => {
           <option value="Crafts">Crafts</option>
         </Select>
 
-        <Select maxW={{ base: '100%', md: '200px' }} value={sortBy} onChange={(e) => setSortBy(e.target.value)} ml={{ md: 'auto' }} bg="white" _dark={{ bg: 'earth.800' }}>
-          <option value="newest">Recently Added</option>
-          <option value="price-desc">Highest Value</option>
-          <option value="price-asc">Lowest Value</option>
+        <Select maxW={{ base: '100%', md: '200px' }} value={sortBy} onChange={(e) => setSortBy(e.target.value)} ml={{ md: 'auto' }}>
+          <option value="newest">Sort by: Newest</option>
+          <option value="price-desc">Sort by: High to Low Value</option>
+          <option value="price-asc">Sort by: Low to High Value</option>
         </Select>
 
         <HStack spacing={2} display={{ base: 'none', md: 'flex' }}>

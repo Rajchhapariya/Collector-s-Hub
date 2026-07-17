@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading, Link as ChakraLink, IconButton, useColorMode, HStack, Button } from '@chakra-ui/react';
+import { Box, Flex, HStack, IconButton, useColorMode, Container, Heading, Link as ChakraLink, useColorModeValue, Button } from '@chakra-ui/react';
 import { Moon, Sun, ShoppingBag } from 'lucide-react';
 import { Link as RouterLink, Outlet, useLocation } from 'react-router-dom';
 
@@ -24,9 +24,17 @@ const Layout = () => {
     );
   };
 
+  const bgGradient = useColorModeValue(
+    'radial-gradient(circle at 50% -20%, #E7C9C1 0%, transparent 50%)',
+    'radial-gradient(circle at 50% -20%, #2A1713 0%, transparent 50%)'
+  );
+
   return (
-    <Box minH="100vh" display="flex" flexDirection="column">
-      <Box as="nav" bg={colorMode === 'dark' ? 'gray.800' : 'white'} boxShadow="sm" position="sticky" top={0} zIndex={10}>
+    <Box minH="100vh" display="flex" flexDirection="column" position="relative" overflow="hidden">
+      {/* Global Background */}
+      <Box position="fixed" inset={0} bgImage={bgGradient} zIndex={-1} opacity={0.6} />
+      
+      <Box as="nav" bg={colorMode === 'dark' ? 'rgba(44, 39, 35, 0.7)' : 'rgba(255, 255, 255, 0.7)'} backdropFilter="blur(16px)" borderBottom="1px solid" borderColor={colorMode === 'dark' ? 'whiteAlpha.200' : 'whiteAlpha.500'} position="sticky" top={0} zIndex={10}>
         <Container maxW="container.xl">
           <Flex h={16} alignItems="center" justify="space-between">
             {/* Left Side: Logo */}

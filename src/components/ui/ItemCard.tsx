@@ -37,8 +37,8 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
           height={isList ? { base: "180px", sm: "100%" } : { base: "180px", md: "220px" }}
           width={isList ? { base: "100%", sm: "200px", md: "250px" } : "100%"}
           objectFit="contain"
-          bg="earth.50"
-          _dark={{ bg: "earth.900" }}
+          bg="transparent"
+          _dark={{ bg: "transparent" }}
           cursor={onOpenDetails ? "pointer" : "default"}
           onClick={() => onOpenDetails?.(item)}
           loading="lazy"
@@ -62,7 +62,7 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
         </Stack>
       </CardBody>
       
-      {!isList && <Divider mt="4" borderColor="earth.200" _dark={{ borderColor: "whiteAlpha.200" }} />}
+      {!isList && <Divider mt="4" borderColor="whiteAlpha.500" _dark={{ borderColor: "whiteAlpha.200" }} />}
       
       <CardFooter pt={isList ? 0 : 4} px={{ base: 3, md: 5 }} pb={5} display={isList ? 'flex' : 'block'}>
         <Flex w="100%" gap={3} justify={isList ? 'flex-end' : 'flex-start'} align={isList ? 'center' : 'stretch'}>
