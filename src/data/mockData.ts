@@ -144,8 +144,8 @@ export const mockFeedPosts: FeedPost[] = [
   {
     id: 'p4',
     user: {
-      name: 'Vikram Singh',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+      name: 'Bidyut Borgohain',
+      avatar: '/images/avatar2.png',
     },
     image: '/images/indian_coin.png',
     caption: 'Finally added this rare 1918 1 Rupee Coin to my numismatic collection. The silver condition is impeccable! 🪙 #VintageCoins #Numismatics',
@@ -157,8 +157,8 @@ export const mockFeedPosts: FeedPost[] = [
   {
     id: 'p5',
     user: {
-      name: 'Neha Gupta',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+      name: 'Lalrinzuali',
+      avatar: '/images/avatar1.png',
     },
     image: '/images/madhubani_art.png',
     caption: 'Just unboxed this gorgeous Madhubani canvas art. The traditional patterns add so much life to my living room. 🖼️',
@@ -170,8 +170,8 @@ export const mockFeedPosts: FeedPost[] = [
   {
     id: 'p6',
     user: {
-      name: 'Arjun Reddy',
-      avatar: 'https://randomuser.me/api/portraits/men/57.jpg',
+      name: 'Temsula Ao',
+      avatar: '/images/avatar3.png',
     },
     image: '/images/kundan_necklace.png',
     caption: 'Acquired this breathtaking royal Kundan necklace for an upcoming family wedding. The craftsmanship of Rajputana jewelers is truly unmatched. ✨',
@@ -182,8 +182,8 @@ export const mockFeedPosts: FeedPost[] = [
   {
     id: 'p7',
     user: {
-      name: 'Sneha Patil',
-      avatar: 'https://randomuser.me/api/portraits/women/27.jpg',
+      name: 'Phuntsok Dorjee',
+      avatar: '/images/avatar2.png',
     },
     image: '/images/elephant.png',
     caption: 'I am mesmerized by the intricate details on this Mysore hand-carved wooden elephant. A true testament to Indian craftsmanship! 🐘✨',
@@ -195,8 +195,8 @@ export const mockFeedPosts: FeedPost[] = [
   {
     id: 'p8',
     user: {
-      name: 'Rohan Kapoor',
-      avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
+      name: 'Ritu Rajkonwar',
+      avatar: '/images/avatar1.png',
     },
     image: '/images/diyas.png',
     caption: 'Restoring these vintage brass diyas from Jaipur to their former glory. The patina on these antiques is just incredible. 🪔 #Antiques #Heritage',
