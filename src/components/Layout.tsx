@@ -48,14 +48,14 @@ const Layout = () => {
             </Flex>
             
             {/* Center: Nav Links */}
-            <HStack as="nav" spacing={2} display={{ base: 'none', md: 'flex' }} justify="center">
+            <HStack as="nav" spacing={2} display={{ base: 'none', lg: 'flex' }} justify="center">
               <NavLink to="/marketplace">Marketplace</NavLink>
               <NavLink to="/feed">Community Feed</NavLink>
               <NavLink to="/collection">My Collection</NavLink>
             </HStack>
 
             {/* Right Side: Icons */}
-            <Flex flex={{ base: 0, md: 1 }} justify="flex-end" alignItems="center" gap={4}>
+            <Flex flex={{ base: 0, lg: 1 }} justify="flex-end" alignItems="center" gap={4}>
               <IconButton
                 aria-label="Toggle Dark Mode"
                 icon={colorMode === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -63,7 +63,7 @@ const Layout = () => {
                 variant="ghost"
                 isRound
               />
-              <Box display={{ base: 'block', md: 'none' }}>
+              <Box display={{ base: 'block', lg: 'none' }}>
                 <Menu>
                   <MenuButton as={IconButton} icon={<MenuIcon size={20} />} variant="ghost" aria-label="Open menu" />
                   <MenuList bg={colorMode === 'dark' ? 'earth.900' : 'white'} borderColor={colorMode === 'dark' ? 'whiteAlpha.200' : 'earth.200'}>
