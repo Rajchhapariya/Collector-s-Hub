@@ -109,7 +109,7 @@ export const mockListings: Collectible[] = [
     price: 5200,
     sellerName: 'KeralaWoodCrafts',
     location: 'Kochi, India',
-    image: 'https://loremflickr.com/500/500/india,woodcarving,elephant?lock=11',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/2/22/Elephant_Carved_Wood.jpg',
   },
   {
     id: '12',
@@ -119,7 +119,7 @@ export const mockListings: Collectible[] = [
     price: 4100,
     sellerName: 'NumismaticsIndia',
     location: 'Pune, India',
-    image: 'https://loremflickr.com/500/500/vintage,indian,coin?lock=12',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/0/03/2-annas-1946-george-vi-obs.png',
   },
   {
     id: '13',
@@ -129,7 +129,7 @@ export const mockListings: Collectible[] = [
     price: 9500,
     sellerName: 'PhilatelyKing',
     location: 'New Delhi, India',
-    image: 'https://loremflickr.com/500/500/india,postage,stamp?lock=13',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Stamp_of_India_-_1947_-_Colnect_141342_-_1_-_National_Flag.jpeg',
   },
   {
     id: '14',
@@ -139,7 +139,7 @@ export const mockListings: Collectible[] = [
     price: 18500,
     sellerName: 'DeccanHeritage',
     location: 'Thrissur, India',
-    image: 'https://loremflickr.com/500/500/antique,brass,bowl?lock=14',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Uruli.jpg',
   }
 ];
 
@@ -185,7 +185,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p4',
     user: {
       name: 'Bidyut Borgohain',
-      avatar: 'https://loremflickr.com/150/150/assam,portrait,man?lock=40',
+      avatar: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Bikash_Dihingia_-_Portrait.jpg',
     },
     image: '/images/indian_coin.png',
     caption: 'Finally added this rare 1918 1 Rupee Coin to my numismatic collection. The silver condition is impeccable! 🪙 #VintageCoins #Numismatics',
@@ -198,7 +198,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p5',
     user: {
       name: 'Lalrinzuali',
-      avatar: 'https://loremflickr.com/150/150/mizoram,portrait,woman?lock=50',
+      avatar: 'https://upload.wikimedia.org/wikipedia/commons/b/b3/Mizo_girls_in_Mizo_traditional_dress.jpg',
     },
     image: '/images/madhubani_art.png',
     caption: 'Just unboxed this gorgeous Madhubani canvas art. The traditional patterns add so much life to my living room. 🖼️',
@@ -211,7 +211,7 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p6',
     user: {
       name: 'Temsula Ao',
-      avatar: 'https://loremflickr.com/150/150/nagaland,portrait,woman?lock=60',
+      avatar: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Aos_2219b.jpg',
     },
     image: '/images/kundan_necklace.png',
     caption: 'Acquired this breathtaking royal Kundan necklace for an upcoming family wedding. The craftsmanship of Rajputana jewelers is truly unmatched. ✨',
@@ -223,9 +223,9 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p7',
     user: {
       name: 'Phuntsok Dorjee',
-      avatar: 'https://loremflickr.com/150/150/sikkim,portrait,man?lock=70',
+      avatar: 'https://upload.wikimedia.org/wikipedia/commons/1/13/A_Monpa_man.jpg',
     },
-    image: 'https://loremflickr.com/500/500/india,woodcarving,elephant?lock=11',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/2/22/Elephant_Carved_Wood.jpg',
     caption: 'I am mesmerized by the intricate details on this Mysore hand-carved wooden elephant. A true testament to Indian craftsmanship! 🐘✨',
     category: 'Crafts',
     likes: 310,
@@ -236,9 +236,9 @@ export const mockFeedPosts: FeedPost[] = [
     id: 'p8',
     user: {
       name: 'Ritu Rajkonwar',
-      avatar: 'https://loremflickr.com/150/150/northeast,india,portrait?lock=80',
+      avatar: 'https://upload.wikimedia.org/wikipedia/commons/f/f6/Zubeen_Garg_2019.jpg',
     },
-    image: 'https://loremflickr.com/500/500/antique,brass,bowl?lock=14',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Uruli.jpg',
     caption: 'Restoring these vintage brass diyas from Jaipur to their former glory. The patina on these antiques is just incredible. 🪔 #Antiques #Heritage',
     category: 'Antiques',
     likes: 542,
