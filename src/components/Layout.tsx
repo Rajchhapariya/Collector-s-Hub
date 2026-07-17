@@ -1,0 +1,68 @@
+import { Box, Container, Flex, Heading, Link as ChakraLink, IconButton, useColorMode, HStack, Button } from '@chakra-ui/react';
+import { Moon, Sun, ShoppingBag } from 'lucide-react';
+import { Link as RouterLink, Outlet, useLocation } from 'react-router-dom';
+
+const Layout = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const location = useLocation();
+
+  const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
+    const isActive = location.pathname === to;
+    return (
+      <ChakraLink
+        as={RouterLink}
+        to={to}
+        px={3}
+        py={2}
+        rounded="md"
+        _hover={{ textDecoration: 'none', bg: colorMode === 'dark' ? 'gray.700' : 'gray.200' }}
+        bg={isActive ? (colorMode === 'dark' ? 'gray.700' : 'gray.200') : 'transparent'}
+        fontWeight={isActive ? 'bold' : 'medium'}
+      >
+        {children}
+      </ChakraLink>
+    );
+  };
+
+  return (
+    <Box minH="100vh" display="flex" flexDirection="column">
+      <Box as="nav" bg={colorMode === 'dark' ? 'gray.800' : 'white'} boxShadow="sm" position="sticky" top={0} zIndex={10}>
+        <Container maxW="container.xl">
+          <Flex h={16} alignItems="center" justify="space-between">
+            <HStack spacing={8} alignItems="center">
+              <ChakraLink as={RouterLink} to="/" _hover={{ textDecoration: 'none' }}>
+                <Flex alignItems="center" gap={2}>
+                  <Box color="brand.500"><ShoppingBag size={28} /></Box>
+                  <Heading size="md" color="brand.500" letterSpacing="tight">Collector's Hub</Heading>
+                </Flex>
+              </ChakraLink>
+              
+              <HStack as="nav" spacing={2} display={{ base: 'none', md: 'flex' }}>
+                <NavLink to="/marketplace">Marketplace</NavLink>
+                <NavLink to="/feed">Community Feed</NavLink>
+                <NavLink to="/collection">My Collection</NavLink>
+              </HStack>
+            </HStack>
+
+            <Flex alignItems="center" gap={4}>
+              <IconButton
+                aria-label="Toggle Dark Mode"
+                icon={colorMode === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                onClick={toggleColorMode}
+                variant="ghost"
+                isRound
+              />
+              <Button display={{ base: 'flex', md: 'none' }} variant="ghost">Menu</Button>
+            </Flex>
+          </Flex>
+        </Container>
+      </Box>
+
+      <Box as="main" flex="1" py={8}>
+        <Outlet />
+      </Box>
+    </Box>
+  );
+};
+
+export default Layout;

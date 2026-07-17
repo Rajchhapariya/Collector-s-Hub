@@ -1,0 +1,72 @@
+import { Card, CardHeader, CardBody, CardFooter, Flex, Avatar, Box, Heading, Text, Image, IconButton, Button, HStack, useColorModeValue } from '@chakra-ui/react';
+import { Heart, MessageCircle, Bookmark, Share2, MoreVertical } from 'lucide-react';
+import type { FeedPost } from '../../types';
+import { useFeedStore } from '../../store/useFeedStore';
+
+interface PostCardProps {
+  post: FeedPost;
+  onOpenDetails?: (post: FeedPost) => void;
+}
+
+const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
+  const { likePost, savePost } = useFeedStore();
+  const likeColor = useColorModeValue('#CB5C45', '#D57965');
+
+  return (
+    <Card w="100%" mx="auto" mb={6}>
+      <CardHeader>
+        <Flex gap={4}>
+          <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+            <Avatar name={post.user.name} src={post.user.avatar} size={{ base: "sm", md: "md" }} />
+            <Box>
+              <Heading size="sm" color="earth.900" _dark={{ color: "earth.50" }}>{post.user.name}</Heading>
+              <Text fontSize="xs" color="earth.800" _dark={{ color: "earth.200" }}>2 hours ago</Text>
+            </Box>
+          </Flex>
+          <IconButton
+            variant="ghost"
+            colorScheme="gray"
+            aria-label="See menu"
+            icon={<MoreVertical size={20} />}
+          />
+        </Flex>
+      </CardHeader>
+      
+      <CardBody pt={0} cursor={onOpenDetails ? "pointer" : "default"} onClick={() => onOpenDetails?.(post)}>
+        <Text mb={4} color="earth.900" _dark={{ color: "whiteAlpha.900" }}>{post.caption}</Text>
+      </CardBody>
+      
+      <Image
+        src={post.image}
+        alt="Post image"
+        w="100%"
+        fallbackSrc="https://placehold.co/600x400/E5DFD5/873928?text=Loading..."
+        cursor={onOpenDetails ? "pointer" : "default"} 
+        onClick={() => onOpenDetails?.(post)}
+        loading="lazy"
+      />
+
+      <CardFooter justify="space-between" flexWrap="wrap" px={{ base: 2, md: 4 }}>
+        <HStack spacing={{ base: 1, md: 4 }}>
+          <Button size={{ base: "sm", md: "md" }} variant="ghost" leftIcon={<Heart size={20} fill={post.isLiked ? "currentColor" : "none"} color={post.isLiked ? likeColor : "currentColor"} />} onClick={() => likePost(post.id)}>
+            {post.likes}
+          </Button>
+          <Button size={{ base: "sm", md: "md" }} variant="ghost" leftIcon={<MessageCircle size={20} />}>
+            {post.comments}
+          </Button>
+          <Button size={{ base: "sm", md: "md" }} variant="ghost" leftIcon={<Share2 size={20} />} display={{ base: "none", sm: "flex" }}>
+            Share
+          </Button>
+        </HStack>
+        <IconButton 
+          variant="ghost" 
+          aria-label="Save post" 
+          icon={<Bookmark size={20} fill={post.isSaved ? "currentColor" : "none"} />} 
+          onClick={() => savePost(post.id)} 
+        />
+      </CardFooter>
+    </Card>
+  );
+};
+
+export default PostCard;
