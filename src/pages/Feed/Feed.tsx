@@ -42,8 +42,8 @@ const Feed = () => {
   };
 
   return (
-    <Container maxW="container.md" py={4}>
-      <Heading size="xl" mb={6} textAlign="center" color="earth.900" _dark={{ color: "earth.50" }}>Community Feed</Heading>
+    <Container maxW="600px" py={4}>
+      <Heading size="lg" mb={4} textAlign="center" color="earth.900" _dark={{ color: "earth.50" }}>Community Feed</Heading>
       
       <Flex gap={4} mb={8} flexWrap="wrap">
         <InputGroup flex="1" maxW={{ base: '100%', md: '60%' }}>

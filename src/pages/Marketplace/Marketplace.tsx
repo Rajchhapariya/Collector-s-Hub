@@ -85,12 +85,12 @@ const Marketplace = () => {
   };
 
   return (
-    <Container maxW="container.xl">
-      <VStack spacing={8} align="stretch">
+    <Container maxW="container.xl" py={4}>
+      <VStack spacing={5} align="stretch">
         <Flex justify="space-between" align="end" flexWrap="wrap" gap={4}>
           <Box>
-            <Heading size="xl" mb={2} color="earth.900" _dark={{ color: "earth.50" }}>Marketplace</Heading>
-            <Text color="earth.800" _dark={{ color: "earth.200" }}>Discover rare and unique artisanal items</Text>
+            <Heading size="lg" mb={1} color="earth.900" _dark={{ color: "earth.50" }}>Marketplace</Heading>
+            <Text fontSize="sm" color="earth.800" _dark={{ color: "earth.200" }}>Discover rare and unique artisanal items</Text>
           </Box>
         </Flex>
 

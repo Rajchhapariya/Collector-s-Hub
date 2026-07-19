@@ -49,8 +49,8 @@ const Collection = () => {
   );
 
   return (
-    <Container maxW="container.xl">
-      <Heading size="xl" mb={6} color="earth.900" _dark={{ color: "earth.50" }}>My Collection</Heading>
+    <Container maxW="container.xl" py={4}>
+      <Heading size="lg" mb={4} color="earth.900" _dark={{ color: "earth.50" }}>My Collection</Heading>
       
       <Flex gap={4} mb={6} flexWrap="wrap">
         <InputGroup maxW={{ base: '100%', md: '300px' }}>
