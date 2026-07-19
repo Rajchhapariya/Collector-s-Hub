@@ -155,7 +155,6 @@ export const mockFeedPosts: FeedPost[] = [
     category: 'Textiles',
     likes: 342,
     comments: 45,
-    isLiked: true,
   },
   {
     id: 'p2',
@@ -192,7 +191,6 @@ export const mockFeedPosts: FeedPost[] = [
     category: 'Coins',
     likes: 215,
     comments: 18,
-    isSaved: true,
   },
   {
     id: 'p5',
@@ -205,7 +203,6 @@ export const mockFeedPosts: FeedPost[] = [
     category: 'Art',
     likes: 432,
     comments: 27,
-    isLiked: true,
   },
   {
     id: 'p6',
@@ -230,7 +227,6 @@ export const mockFeedPosts: FeedPost[] = [
     category: 'Crafts',
     likes: 310,
     comments: 22,
-    isLiked: true,
   },
   {
     id: 'p8',

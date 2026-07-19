@@ -34,7 +34,7 @@ const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
         <Stack mt={isList ? 0 : "4"} spacing="3" px={{ base: 3, md: 4 }} py={isList ? { base: 2, sm: 3 } : 0} flex="1" justify="space-between">
           <Box>
             <Flex justify="space-between" align="start" gap={2}>
-              <Heading size={{ base: isList ? "sm" : "md", sm: "md" }} noOfLines={2} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
+              <Heading size={{ base: isList ? "sm" : "md", sm: "md" }} noOfLines={2} minH={isList ? 'auto' : '48px'} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
               <Menu>
                 <MenuButton as={IconButton} icon={<MoreVertical size={20} />} variant="ghost" size="sm" flexShrink={0} mt="-1" mr="-2" />
                 <Portal>

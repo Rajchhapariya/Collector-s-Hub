@@ -1,4 +1,4 @@
-import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, Button, Flex, Badge, useToast, Icon } from '@chakra-ui/react';
+import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, Button, Flex, Badge, useToast, Icon, Box } from '@chakra-ui/react';
 import { ShoppingCart, Heart } from 'lucide-react';
 import type { Collectible } from '../../types';
 import { useCollectionStore } from '../../store/useCollectionStore';
@@ -43,22 +43,24 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
           onClick={() => onOpenDetails?.(item)}
           loading="lazy"
         />
-        <Stack mt={isList ? 0 : "4"} spacing={isList ? { base: 1, sm: 3 } : 3} px={{ base: 3, md: 5 }} py={isList ? { base: 3, sm: 4 } : 0} flex="1" justify="center">
+        <Stack mt={isList ? 0 : "4"} spacing={isList ? { base: 1, sm: 3 } : 3} px={{ base: 3, md: 5 }} py={isList ? { base: 3, sm: 4 } : 0} flex="1" justify="space-between">
           <Stack spacing={1} cursor={onOpenDetails ? "pointer" : "default"} onClick={() => onOpenDetails?.(item)}>
-            <Heading size={{ base: isList ? "sm" : "md", sm: "md" }} noOfLines={2} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
+            <Heading size={{ base: isList ? "sm" : "md", sm: "md" }} noOfLines={2} minH={isList ? 'auto' : '48px'} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
             <Text color="brand.600" _dark={{ color: "brand.300" }} fontSize={{ base: isList ? "lg" : "xl", sm: "xl" }} fontWeight="bold">
               ₹{item.price.toLocaleString('en-IN')}
             </Text>
           </Stack>
-          <Flex gap={2} wrap="wrap" display={isList ? { base: 'none', sm: 'flex' } : 'flex'}>
-            <Badge colorScheme="orange" variant="subtle">{item.category}</Badge>
-            <Badge colorScheme={item.condition === 'New' ? 'green' : 'yellow'} variant="outline">
-              {item.condition}
-            </Badge>
-          </Flex>
-          <Text color="earth.800" _dark={{ color: "earth.200" }} fontSize="sm">
-            Sold by {item.sellerName} • {item.location}
-          </Text>
+          <Box>
+            <Flex gap={2} wrap="wrap" mb={2} display={isList ? { base: 'none', sm: 'flex' } : 'flex'}>
+              <Badge colorScheme="orange" variant="subtle">{item.category}</Badge>
+              <Badge colorScheme={item.condition === 'New' ? 'green' : 'yellow'} variant="outline">
+                {item.condition}
+              </Badge>
+            </Flex>
+            <Text color="earth.800" _dark={{ color: "earth.200" }} fontSize="sm" noOfLines={1}>
+              Sold by {item.sellerName} • {item.location}
+            </Text>
+          </Box>
         </Stack>
       </CardBody>
       
