@@ -29,7 +29,7 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
 
   const handleWishlistToggle = () => {
     if (isWishlisted) {
-      removeItem(item.id);
+      removeItem(item.id, 'Wishlist');
       toast({
         title: 'Removed from Wishlist',
         status: 'info',
@@ -53,32 +53,41 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
   const isList = viewMode === 'list';
 
   return (
-    <Card h="100%" minH={isList ? { base: 'auto', sm: '150px' } : '100%'} direction={isList ? { base: 'column', lg: 'row' } : 'column'} overflow="hidden">
-      <CardBody p={0} display="flex" flexDir={isList ? 'row' : 'column'}>
-        <Image
-          src={item.image}
-          fallbackSrc="https://placehold.co/500x500/E5DFD5/873928?text=Loading..."
-          alt={item.title}
-          height={isList ? { base: "140px", sm: "150px" } : { base: "150px", md: "170px" }}
-          width={isList ? { base: "120px", sm: "200px", md: "230px" } : "100%"}
-          objectFit="contain"
-          bg="transparent"
-          _dark={{ bg: "transparent" }}
-          cursor={onOpenDetails ? "pointer" : "default"}
-          onClick={() => onOpenDetails?.(item)}
-          loading="lazy"
-        />
-        <Stack mt={isList ? 0 : "3"} spacing={isList ? { base: 1, sm: 2 } : 2.5} px={{ base: 3, md: 4 }} py={isList ? { base: 2, sm: 3 } : 0} flex="1" justify="space-between">
+    <Card h="100%" minH={isList ? { base: 'auto', sm: '140px' } : '100%'} direction={isList ? { base: 'column', sm: 'row' } : 'column'} overflow="hidden">
+      <CardBody p={0} display="flex" flexDir={isList ? { base: 'column', sm: 'row' } : 'column'}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          bg="blackAlpha.50"
+          _dark={{ bg: "blackAlpha.200" }}
+          p={isList ? 2 : 3}
+          width={isList ? { base: "100%", sm: "160px", md: "200px" } : "100%"}
+          flexShrink={0}
+        >
+          <Image
+            src={item.image}
+            fallbackSrc="https://placehold.co/500x500/E5DFD5/873928?text=Loading..."
+            alt={item.title}
+            height={isList ? { base: "140px", sm: "130px" } : { base: "150px", sm: "160px" }}
+            width="100%"
+            objectFit="contain"
+            cursor={onOpenDetails ? "pointer" : "default"}
+            onClick={() => onOpenDetails?.(item)}
+            loading="lazy"
+          />
+        </Box>
+        <Stack mt={isList ? 0 : "3"} spacing="2" px={{ base: 3, md: 4 }} py={isList ? { base: 2, sm: 3 } : 0} flex="1" justify="space-between">
           <Stack spacing={1} cursor={onOpenDetails ? "pointer" : "default"} onClick={() => onOpenDetails?.(item)}>
-            <Heading size="sm" noOfLines={2} minH="40px" color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
+            <Heading size="sm" noOfLines={2} color="earth.900" _dark={{ color: "earth.50" }}>{item.title}</Heading>
             <Text color="brand.600" _dark={{ color: "brand.300" }} fontSize={{ base: "md", sm: "lg" }} fontWeight="bold">
               ₹{item.price.toLocaleString('en-IN')}
             </Text>
           </Stack>
           <Box>
-            <Flex gap={1.5} wrap="wrap" mb={1.5} display={isList ? { base: 'none', sm: 'flex' } : 'flex'}>
-              <Badge colorScheme="orange" variant="subtle" fontSize="2xs">{item.category}</Badge>
-              <Badge colorScheme={item.condition === 'New' ? 'green' : 'yellow'} variant="outline" fontSize="2xs">
+            <Flex gap={1.5} wrap="wrap" mb={1.5}>
+              <Badge colorScheme="orange" variant="subtle" fontSize="xs">{item.category}</Badge>
+              <Badge colorScheme={item.condition === 'New' ? 'green' : 'yellow'} variant="outline" fontSize="xs">
                 {item.condition}
               </Badge>
             </Flex>
@@ -89,7 +98,7 @@ const ItemCard = ({ item, onOpenDetails, viewMode = 'grid' }: ItemCardProps) => 
         </Stack>
       </CardBody>
       
-      {!isList && <Divider mt="3" borderColor="whiteAlpha.500" _dark={{ borderColor: "whiteAlpha.200" }} />}
+      {!isList && <Divider mt="3" borderColor="earth.100" _dark={{ borderColor: "whiteAlpha.200" }} />}
       
       <CardFooter pt={isList ? { base: 2, lg: 0 } : 3} px={{ base: 3, md: 4 }} pb={4} display="flex" alignItems="center">
         <Flex w="100%" gap={2.5} justify={isList ? { base: 'flex-start', lg: 'flex-end' } : 'flex-start'} align="center">

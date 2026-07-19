@@ -49,6 +49,12 @@ const theme = extendTheme({
     }),
   },
   components: {
+    Container: {
+      baseStyle: {
+        maxW: 'container.xl',
+        px: { base: 4, sm: 6, lg: 8 },
+      },
+    },
     Heading: {
       baseStyle: {
         fontWeight: '600',
@@ -106,6 +112,7 @@ const theme = extendTheme({
           border: '1px solid',
           borderColor: props.colorMode === 'dark' ? 'whiteAlpha.200' : 'whiteAlpha.500',
           boxShadow: '2xl',
+          mx: { base: 3, sm: 6 },
         }
       })
     },

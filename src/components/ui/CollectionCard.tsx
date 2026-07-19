@@ -1,4 +1,4 @@
-import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, Flex, Badge, Menu, MenuButton, MenuList, MenuItem, IconButton, Box, Portal } from '@chakra-ui/react';
+import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, Flex, Badge, Menu, MenuButton, MenuList, MenuItem, IconButton, Box, Portal, useToast } from '@chakra-ui/react';
 import { MoreVertical, Trash2, ArrowRightLeft } from 'lucide-react';
 import type { CollectionItem } from '../../types';
 import { useCollectionStore } from '../../store/useCollectionStore';
@@ -10,27 +10,45 @@ interface CollectionCardProps {
 
 const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
   const { removeItem, moveItem } = useCollectionStore();
+  const toast = useToast();
 
   const handleMove = (newType: CollectionItem['collectionType']) => {
-    moveItem(item.id, newType);
+    const result = moveItem(item.id, newType, item.collectionType);
+    toast({
+      title: result?.success ? `Moved to ${newType}` : 'Notice',
+      description: result?.message,
+      status: result?.success ? 'success' : 'info',
+      duration: 2000,
+      isClosable: true,
+      position: 'bottom-right',
+    });
   };
 
   const isList = viewMode === 'list';
 
   return (
-    <Card h="100%" minH={isList ? { base: 'auto', sm: '150px' } : '100%'} direction={isList ? { base: 'column', lg: 'row' } : 'column'} overflow="hidden">
-      <CardBody p={0} display="flex" flexDir={isList ? 'row' : 'column'}>
-        <Image
-          src={item.image}
-          fallbackSrc="https://placehold.co/500x500/E5DFD5/873928?text=Loading..."
-          alt={item.title}
-          height={isList ? { base: "140px", sm: "150px" } : { base: "150px", md: "170px" }}
-          width={isList ? { base: "120px", sm: "200px" } : "100%"}
-          objectFit="contain"
-          bg="transparent"
-          _dark={{ bg: "transparent" }}
-          loading="lazy"
-        />
+    <Card h="100%" minH={isList ? { base: 'auto', sm: '150px' } : '100%'} direction={isList ? { base: 'column', sm: 'row' } : 'column'} overflow="hidden">
+      <CardBody p={0} display="flex" flexDir={isList ? { base: 'column', sm: 'row' } : 'column'}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          bg="blackAlpha.50"
+          _dark={{ bg: "blackAlpha.200" }}
+          p={isList ? 2 : 3}
+          width={isList ? { base: "100%", sm: "160px", md: "200px" } : "100%"}
+          flexShrink={0}
+        >
+          <Image
+            src={item.image}
+            fallbackSrc="https://placehold.co/500x500/E5DFD5/873928?text=Loading..."
+            alt={item.title}
+            height={isList ? { base: "140px", sm: "150px" } : { base: "150px", md: "170px" }}
+            width="100%"
+            objectFit="contain"
+            loading="lazy"
+          />
+        </Box>
         <Stack mt={isList ? 0 : "3"} spacing="2" px={{ base: 3, md: 4 }} py={isList ? { base: 2, sm: 3 } : 0} flex="1" justify="space-between">
           <Box>
             <Flex justify="space-between" align="start" gap={2}>
@@ -54,7 +72,7 @@ const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
                         Move to Selling
                       </MenuItem>
                     )}
-                    <MenuItem icon={<Trash2 size={16} />} color="red.500" onClick={() => removeItem(item.id)}>
+                    <MenuItem icon={<Trash2 size={16} />} color="red.500" onClick={() => removeItem(item.id, item.collectionType)}>
                       Remove
                     </MenuItem>
                   </MenuList>
@@ -62,13 +80,13 @@ const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
               </Menu>
             </Flex>
             <Flex gap={1.5} wrap="wrap" mt={1.5}>
-              <Badge colorScheme="orange" variant="subtle" fontSize="2xs">{item.category}</Badge>
-              <Badge colorScheme={item.condition === 'New' ? 'green' : 'yellow'} variant="outline" fontSize="2xs">
+              <Badge colorScheme="orange" variant="subtle" fontSize="xs">{item.category}</Badge>
+              <Badge colorScheme={item.condition === 'New' ? 'green' : 'yellow'} variant="outline" fontSize="xs">
                 {item.condition}
               </Badge>
             </Flex>
             <Text color="earth.800" _dark={{ color: "earth.200" }} fontSize="xs" mt={1.5}>
-              Added on {new Date(item.dateAdded).toLocaleDateString()}
+              Added on {item.dateAdded ? new Date(item.dateAdded).toLocaleDateString() : 'Recently'}
             </Text>
           </Box>
           
@@ -82,11 +100,11 @@ const CollectionCard = ({ item, viewMode = 'grid' }: CollectionCardProps) => {
           )}
         </Stack>
       </CardBody>
-      {!isList && <Divider mt="3" borderColor="whiteAlpha.500" _dark={{ borderColor: "whiteAlpha.200" }} />}
+      {!isList && <Divider mt="3" borderColor="earth.100" _dark={{ borderColor: "whiteAlpha.200" }} />}
       {!isList && (
         <CardFooter pt={1.5} px={{ base: 3, md: 4 }} pb={3.5}>
           <Box>
-            <Text fontSize="2xs" color="earth.600" _dark={{ color: "earth.400" }}>Estimated Value</Text>
+            <Text fontSize="xs" color="earth.600" _dark={{ color: "earth.400" }}>Estimated Value</Text>
             <Text fontWeight="bold" color="brand.600" _dark={{ color: "brand.300" }} fontSize="md">
               {(item.estimatedValue || item.price) ? `₹${(item.estimatedValue || item.price).toLocaleString('en-IN')}` : 'Not specified'}
             </Text>

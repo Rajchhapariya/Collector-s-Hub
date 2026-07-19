@@ -42,33 +42,49 @@ const Feed = () => {
   };
 
   return (
-    <Container maxW="600px" py={4}>
-      <Heading size="lg" mb={4} textAlign="center" color="earth.900" _dark={{ color: "earth.50" }}>Community Feed</Heading>
+    <Container maxW="container.xl">
+      <VStack spacing={8} align="stretch">
+        <Flex justify="space-between" align="end" flexWrap="wrap" gap={4}>
+          <Box>
+            <Heading size="xl" mb={2} color="earth.900" _dark={{ color: "earth.50" }}>Community Feed</Heading>
+            <Text color="earth.800" _dark={{ color: "earth.200" }}>See what other collectors are sharing and discovering</Text>
+          </Box>
+        </Flex>
       
-      <Flex gap={4} mb={8} flexWrap="wrap">
-        <InputGroup flex="1" maxW={{ base: '100%', md: '60%' }}>
-          <InputLeftElement pointerEvents="none">
-            <Search size={18} />
-          </InputLeftElement>
-          <Input 
-            placeholder="Search posts or users..." 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </InputGroup>
-        <Select 
-          w={{ base: '100%', md: '200px' }} 
-          value={category} 
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="All">All Categories</option>
-          <option value="Textiles">Textiles</option>
-          <option value="Antiques">Antiques</option>
-          <option value="Art">Art</option>
-          <option value="Jewelry">Jewelry</option>
-          <option value="Crafts">Crafts</option>
-        </Select>
-      </Flex>
+        <Flex gap={4} flexWrap="wrap" align="center">
+          <InputGroup 
+            w={{ base: '100%', md: '100%', lg: '300px' }} 
+            maxW={{ base: '100%', md: '100%', lg: '300px' }}
+            flex={{ base: '1 1 100%', md: '1 1 100%', lg: '0 0 auto' }}
+          >
+            <InputLeftElement pointerEvents="none">
+              <Search size={20} color="gray.300" />
+            </InputLeftElement>
+            <Input 
+              placeholder="Search posts or users..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </InputGroup>
+          <Select 
+            w={{ base: '100%', md: 'auto', lg: '200px' }}
+            maxW={{ base: '100%', md: 'none', lg: '200px' }}
+            flex={{ base: '1 1 100%', md: '1', lg: '0 0 auto' }}
+            value={category} 
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="All">All Categories</option>
+            <option value="Textiles">Textiles</option>
+            <option value="Antiques">Antiques</option>
+            <option value="Art">Art</option>
+            <option value="Jewelry">Jewelry</option>
+            <option value="Crafts">Crafts</option>
+            <option value="Coins">Coins</option>
+            <option value="Stamps">Stamps</option>
+          </Select>
+        </Flex>
+
+        <Box maxW="720px" mx="auto" w="100%">
 
       {loading ? (
         <VStack spacing={6}>
@@ -97,6 +113,8 @@ const Feed = () => {
           )}
         </VStack>
       )}
+      </Box>
+      </VStack>
 
       {/* Post Details Modal */}
       <Modal isOpen={isOpen} onClose={onClose} size="3xl" isCentered>
@@ -107,11 +125,13 @@ const Feed = () => {
           <ModalBody pb={6}>
             {selectedPost && (
               <Flex direction={{ base: 'column', md: 'row' }} gap={6} mt={4}>
-                <Box flex="1">
+                <Box flex="1" bg="blackAlpha.50" _dark={{ bg: "blackAlpha.200" }} p={4} borderRadius="xl" display="flex" alignItems="center" justifyContent="center">
                   <Image 
                     src={selectedPost.image} 
                     alt="Post Image" 
                     w="100%" 
+                    maxH="500px"
+                    objectFit="contain"
                     borderRadius="md"
                     fallbackSrc="https://placehold.co/600x400/E5DFD5/873928?text=Loading..."
                   />

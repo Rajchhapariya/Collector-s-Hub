@@ -25,3 +25,6 @@ dist-ssr
 
 # Media recordings
 *.mp4
+
+# Personal interview guides
+INTERVIEW*

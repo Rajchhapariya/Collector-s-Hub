@@ -42,7 +42,13 @@ const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
     } else {
       setPostSaved(post.id, false);
       // Remove it if they unsave
-      removeItem(post.id);
+      removeItem(post.id, 'Saved Posts');
+      toast({
+        title: "Removed from Saved Posts",
+        status: "info",
+        duration: 2000,
+        isClosable: true,
+      });
     }
   };
 
@@ -71,17 +77,19 @@ const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
         <Text mb={2} fontSize="sm" color="earth.900" _dark={{ color: "whiteAlpha.900" }}>{post.caption}</Text>
       </CardBody>
       
-      <Image
-        src={post.image}
-        alt="Post image"
-        w="100%"
-        maxH="460px"
-        objectFit="cover"
-        fallbackSrc="https://placehold.co/600x400/E5DFD5/873928?text=Loading..."
-        cursor={onOpenDetails ? "pointer" : "default"} 
-        onClick={() => onOpenDetails?.(post)}
-        loading="lazy"
-      />
+      <Box bg="blackAlpha.50" _dark={{ bg: "blackAlpha.200" }} display="flex" alignItems="center" justifyContent="center">
+        <Image
+          src={post.image}
+          alt="Post image"
+          w="100%"
+          maxH="520px"
+          objectFit="contain"
+          fallbackSrc="https://placehold.co/600x400/E5DFD5/873928?text=Loading..."
+          cursor={onOpenDetails ? "pointer" : "default"} 
+          onClick={() => onOpenDetails?.(post)}
+          loading="lazy"
+        />
+      </Box>
 
       <CardFooter justify="space-between" flexWrap="wrap" py={2.5} px={4}>
         <HStack spacing={{ base: 1, md: 3 }}>

@@ -14,8 +14,8 @@ interface CollectionState {
   setSortBy: (sortBy: string) => void;
   setViewMode: (mode: 'grid' | 'list') => void;
   addItem: (item: Collectible, collectionType: CollectionItem['collectionType']) => { success: boolean; message: string };
-  removeItem: (id: string) => void;
-  moveItem: (id: string, newType: CollectionItem['collectionType']) => void;
+  removeItem: (id: string, collectionType?: CollectionItem['collectionType']) => void;
+  moveItem: (id: string, newType: CollectionItem['collectionType'], oldType?: CollectionItem['collectionType']) => { success: boolean; message: string };
 }
 
 export const useCollectionStore = create<CollectionState>()(
@@ -47,21 +47,43 @@ export const useCollectionStore = create<CollectionState>()(
         set({ items: [...items, newItem] });
         return { success: true, message: `Added to ${collectionType} successfully!` };
       },
-      removeItem: (id) => {
+      removeItem: (id, collectionType) => {
         set((state) => ({
-          items: state.items.filter((item) => item.id !== id),
+          items: state.items.filter((item) => {
+            if (collectionType) {
+              return !(item.id === id && item.collectionType === collectionType);
+            }
+            return item.id !== id;
+          }),
         }));
-        useFeedStore.getState().setPostSaved(id, false);
+        if (!collectionType || collectionType === 'Saved Posts') {
+          useFeedStore.getState().setPostSaved(id, false);
+        }
       },
-      moveItem: (id, newType) => {
+      moveItem: (id, newType, oldType) => {
+        const { items } = get();
+        const targetExists = items.some((i) => i.id === id && i.collectionType === newType);
+        if (targetExists) {
+          set((state) => ({
+            items: state.items.filter((item) => {
+              if (oldType) {
+                return !(item.id === id && item.collectionType === oldType);
+              }
+              return !(item.id === id && item.collectionType !== newType);
+            }),
+          }));
+          return { success: true, message: `Moved to ${newType} (item already present)` };
+        }
+
         set((state) => ({
           items: state.items.map((item) => {
-            if (item.id === id) {
+            if (item.id === id && (!oldType || item.collectionType === oldType)) {
               return { ...item, collectionType: newType };
             }
             return item;
           }),
         }));
+        return { success: true, message: `Moved to ${newType}` };
       },
     }),
     {

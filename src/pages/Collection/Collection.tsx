@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Tabs, TabList, TabPanels, Tab, TabPanel, SimpleGrid, Text, Input, InputGroup, InputLeftElement, Flex, Select, HStack, IconButton } from '@chakra-ui/react';
+import { Box, Container, Heading, Tabs, TabList, TabPanels, Tab, TabPanel, SimpleGrid, Text, Input, InputGroup, InputLeftElement, Flex, Select, HStack, VStack, IconButton } from '@chakra-ui/react';
 import { Search, Inbox, LayoutGrid, List } from 'lucide-react';
 import { useCollectionStore } from '../../store/useCollectionStore';
 import { useDebounce } from '../../hooks/useDebounce';
@@ -49,10 +49,16 @@ const Collection = () => {
   );
 
   return (
-    <Container maxW="container.xl" py={4}>
-      <Heading size="lg" mb={4} color="earth.900" _dark={{ color: "earth.50" }}>My Collection</Heading>
+    <Container maxW="container.xl">
+      <VStack spacing={8} align="stretch">
+        <Flex justify="space-between" align="end" flexWrap="wrap" gap={4}>
+          <Box>
+            <Heading size="xl" mb={2} color="earth.900" _dark={{ color: "earth.50" }}>My Collection</Heading>
+            <Text color="earth.800" _dark={{ color: "earth.200" }}>Manage your personal treasures, wishlist, and active listings</Text>
+          </Box>
+        </Flex>
       
-      <Flex gap={4} mb={6} flexWrap="wrap" align="center">
+        <Flex gap={4} flexWrap="wrap" align="center">
         <InputGroup 
           w={{ base: '100%', md: '100%', lg: '300px' }} 
           maxW={{ base: '100%', md: '100%', lg: '300px' }}
@@ -81,6 +87,8 @@ const Collection = () => {
           <option value="Art">Art</option>
           <option value="Jewelry">Jewelry</option>
           <option value="Crafts">Crafts</option>
+          <option value="Coins">Coins</option>
+          <option value="Stamps">Stamps</option>
         </Select>
 
         <Select 
@@ -149,6 +157,7 @@ const Collection = () => {
           </TabPanel>
         </TabPanels>
       </Tabs>
+      </VStack>
     </Container>
   );
 };
