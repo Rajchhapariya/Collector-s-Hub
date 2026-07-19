@@ -1,6 +1,10 @@
 # Collector's Hub
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://collector-s-hub-blond.vercel.app/)
+
 Welcome to **Collector's Hub**, a responsive web application where users can discover collectible items through a marketplace, browse community posts, and manage their personal collection. 
+
+> **🌐 Live Demo:** [https://collector-s-hub-blond.vercel.app/](https://collector-s-hub-blond.vercel.app/) 
 
 This project was built as a React Web Developer Internship Assignment, focusing on high-quality code, an intuitive user experience, and a stunning "premium" aesthetic.
 
