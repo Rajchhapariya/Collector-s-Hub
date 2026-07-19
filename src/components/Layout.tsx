@@ -53,8 +53,8 @@ const Layout = () => {
                 gap={2}
                 py={2}
               >
-                <ShoppingBag size={22} strokeWidth={2.5} style={{ marginTop: '-2px' }} color="var(--chakra-colors-brand-500)" />
-                <Box as="span" fontSize="xl" fontWeight="bold" color="brand.500" letterSpacing="tight">
+                <ShoppingBag size={22} strokeWidth={2.5} style={{ marginTop: '-2px', flexShrink: 0 }} color="var(--chakra-colors-brand-500)" />
+                <Box as="span" fontSize={{ base: "lg", sm: "xl" }} fontWeight="bold" color="brand.500" letterSpacing="tight" whiteSpace="nowrap">
                   Collector's Hub
                 </Box>
               </ChakraLink>
