@@ -52,8 +52,12 @@ const Collection = () => {
     <Container maxW="container.xl" py={4}>
       <Heading size="lg" mb={4} color="earth.900" _dark={{ color: "earth.50" }}>My Collection</Heading>
       
-      <Flex gap={4} mb={6} flexWrap="wrap">
-        <InputGroup maxW={{ base: '100%', md: '300px' }}>
+      <Flex gap={4} mb={6} flexWrap="wrap" align="center">
+        <InputGroup 
+          w={{ base: '100%', md: '100%', lg: '300px' }} 
+          maxW={{ base: '100%', md: '100%', lg: '300px' }}
+          flex={{ base: '1 1 100%', md: '1 1 100%', lg: '0 0 auto' }}
+        >
           <InputLeftElement pointerEvents="none">
             <Search color="gray.300" size={20} />
           </InputLeftElement>
@@ -64,7 +68,14 @@ const Collection = () => {
           />
         </InputGroup>
         
-        <Select placeholder="All Categories" maxW={{ base: '100%', md: '200px' }} value={category} onChange={(e) => setCategory(e.target.value)}>
+        <Select 
+          placeholder="All Categories" 
+          w={{ base: '100%', md: 'auto', lg: '200px' }}
+          maxW={{ base: '100%', md: 'none', lg: '200px' }}
+          flex={{ base: '1 1 100%', md: '1', lg: '0 0 auto' }}
+          value={category} 
+          onChange={(e) => setCategory(e.target.value)}
+        >
           <option value="Textiles">Textiles</option>
           <option value="Antiques">Antiques</option>
           <option value="Art">Art</option>
@@ -72,13 +83,20 @@ const Collection = () => {
           <option value="Crafts">Crafts</option>
         </Select>
 
-        <Select maxW={{ base: '100%', md: '200px' }} value={sortBy} onChange={(e) => setSortBy(e.target.value)} ml={{ md: 'auto' }}>
+        <Select 
+          w={{ base: '100%', md: 'auto', lg: '200px' }}
+          maxW={{ base: '100%', md: 'none', lg: '200px' }}
+          flex={{ base: '1 1 100%', md: '1', lg: '0 0 auto' }}
+          value={sortBy} 
+          onChange={(e) => setSortBy(e.target.value)} 
+          ml={{ base: 0, md: 0, lg: 'auto' }}
+        >
           <option value="newest">Sort by: Newest</option>
           <option value="price-desc">Sort by: High to Low Value</option>
           <option value="price-asc">Sort by: Low to High Value</option>
         </Select>
 
-        <HStack spacing={2} display={{ base: 'none', md: 'flex' }}>
+        <HStack spacing={2} display={{ base: 'none', md: 'flex' }} flexShrink={0} align="center">
           <IconButton aria-label="Grid view" icon={<LayoutGrid size={20} />} variant={viewMode === 'grid' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('grid')} />
           <IconButton aria-label="List view" icon={<List size={20} />} variant={viewMode === 'list' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('list')} />
         </HStack>

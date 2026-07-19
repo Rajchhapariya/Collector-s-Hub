@@ -94,8 +94,12 @@ const Marketplace = () => {
           </Box>
         </Flex>
 
-        <Flex gap={4} flexWrap="wrap">
-          <InputGroup maxW={{ base: '100%', md: '300px' }}>
+        <Flex gap={4} flexWrap="wrap" align="center">
+          <InputGroup 
+            w={{ base: '100%', md: '100%', lg: '300px' }} 
+            maxW={{ base: '100%', md: '100%', lg: '300px' }}
+            flex={{ base: '1 1 100%', md: '1 1 100%', lg: '0 0 auto' }}
+          >
             <InputLeftElement pointerEvents="none">
               <Search color="gray.300" size={20} />
             </InputLeftElement>
@@ -106,7 +110,14 @@ const Marketplace = () => {
             />
           </InputGroup>
           
-          <Select placeholder="All Categories" maxW={{ base: '100%', md: '200px' }} value={category} onChange={(e) => setCategory(e.target.value)}>
+          <Select 
+            placeholder="All Categories" 
+            w={{ base: '100%', md: 'auto', lg: '200px' }}
+            maxW={{ base: '100%', md: 'none', lg: '200px' }}
+            flex={{ base: '1 1 100%', md: '1', lg: '0 0 auto' }}
+            value={category} 
+            onChange={(e) => setCategory(e.target.value)}
+          >
             <option value="Textiles">Textiles</option>
             <option value="Antiques">Antiques</option>
             <option value="Art">Art</option>
@@ -116,7 +127,14 @@ const Marketplace = () => {
             <option value="Stamps">Stamps</option>
           </Select>
 
-          <Select placeholder="All Conditions" maxW={{ base: '100%', md: '200px' }} value={condition} onChange={(e) => setCondition(e.target.value)}>
+          <Select 
+            placeholder="All Conditions" 
+            w={{ base: '100%', md: 'auto', lg: '200px' }}
+            maxW={{ base: '100%', md: 'none', lg: '200px' }}
+            flex={{ base: '1 1 100%', md: '1', lg: '0 0 auto' }}
+            value={condition} 
+            onChange={(e) => setCondition(e.target.value)}
+          >
             <option value="New">New</option>
             <option value="Like New">Like New</option>
             <option value="Excellent">Excellent</option>
@@ -124,13 +142,20 @@ const Marketplace = () => {
             <option value="Good">Good</option>
           </Select>
 
-          <Select maxW={{ base: '100%', md: '200px' }} value={sortBy} onChange={(e) => setSortBy(e.target.value)} ml={{ md: 'auto' }}>
+          <Select 
+            w={{ base: '100%', md: 'auto', lg: '200px' }}
+            maxW={{ base: '100%', md: 'none', lg: '200px' }}
+            flex={{ base: '1 1 100%', md: '1', lg: '0 0 auto' }}
+            value={sortBy} 
+            onChange={(e) => setSortBy(e.target.value)} 
+            ml={{ base: 0, md: 0, lg: 'auto' }}
+          >
             <option value="newest">Sort by: Newest</option>
             <option value="price-desc">Sort by: High to Low</option>
             <option value="price-asc">Sort by: Low to High</option>
           </Select>
 
-          <HStack spacing={2}>
+          <HStack spacing={2} flexShrink={0} align="center">
             <IconButton aria-label="Grid view" icon={<LayoutGrid size={20} />} variant={viewMode === 'grid' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('grid')} />
             <IconButton aria-label="List view" icon={<List size={20} />} variant={viewMode === 'list' ? 'solid' : 'ghost'} colorScheme="brand" onClick={() => setViewMode('list')} />
           </HStack>
