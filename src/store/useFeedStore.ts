@@ -7,6 +7,7 @@ interface FeedState {
   setPosts: (posts: FeedPost[]) => void;
   likePost: (id: string) => void;
   savePost: (id: string) => void;
+  setPostSaved: (id: string, isSaved: boolean) => void;
 }
 
 export const useFeedStore = create<FeedState>()(
@@ -54,6 +55,16 @@ export const useFeedStore = create<FeedState>()(
           posts: state.posts.map((post) => {
             if (post.id === id) {
               return { ...post, isSaved: !post.isSaved };
+            }
+            return post;
+          }),
+        }));
+      },
+      setPostSaved: (id, isSaved) => {
+        set((state) => ({
+          posts: state.posts.map((post) => {
+            if (post.id === id) {
+              return { ...post, isSaved };
             }
             return post;
           }),

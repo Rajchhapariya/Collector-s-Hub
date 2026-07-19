@@ -11,14 +11,14 @@ interface PostCardProps {
 }
 
 const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
-  const { likePost, savePost } = useFeedStore();
+  const { likePost, savePost, setPostSaved } = useFeedStore();
   const { addItem, removeItem } = useCollectionStore();
   const likeColor = '#ed4956'; // Instagram red
   const toast = useToast();
 
   const handleSave = () => {
-    savePost(post.id);
     if (!post.isSaved) {
+      setPostSaved(post.id, true);
       // Actually add it to the Saved Posts collection
       addItem({
         id: post.id,
@@ -38,6 +38,7 @@ const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
         isClosable: true,
       });
     } else {
+      setPostSaved(post.id, false);
       // Remove it if they unsave
       removeItem(post.id);
     }

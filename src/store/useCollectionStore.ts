@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { CollectionItem, Collectible } from '../types';
+import { useFeedStore } from './useFeedStore';
 
 interface CollectionState {
   items: CollectionItem[];
@@ -50,6 +51,7 @@ export const useCollectionStore = create<CollectionState>()(
         set((state) => ({
           items: state.items.filter((item) => item.id !== id),
         }));
+        useFeedStore.getState().setPostSaved(id, false);
       },
       moveItem: (id, newType) => {
         set((state) => ({
