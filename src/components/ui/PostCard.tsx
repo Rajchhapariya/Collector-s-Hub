@@ -11,7 +11,7 @@ interface PostCardProps {
 }
 
 const PostCard = ({ post, onOpenDetails }: PostCardProps) => {
-  const { likePost, savePost, setPostSaved } = useFeedStore();
+  const { likePost, setPostSaved } = useFeedStore();
   const { addItem, removeItem } = useCollectionStore();
   const likeColor = '#ed4956'; // Instagram red
   const toast = useToast();
