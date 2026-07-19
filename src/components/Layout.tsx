@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Box, Flex, HStack, IconButton, useColorMode, Container, Link as ChakraLink, useColorModeValue, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { Moon, Sun, ShoppingBag, Menu as MenuIcon } from 'lucide-react';
 import { Link as RouterLink, Outlet, useLocation } from 'react-router-dom';
@@ -5,6 +6,10 @@ import { Link as RouterLink, Outlet, useLocation } from 'react-router-dom';
 const Layout = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
     const isActive = location.pathname === to;
